@@ -1,4 +1,4 @@
 conf
 ====
 
-Configuration settings
+Configuration settings.
