@@ -1,0 +1,3 @@
+ACTION=="add", KERNEL=="usb0", ATTRS{manufacturer}=="Linux 2.6.31-rt11-lab126 with fsl-usb2-udc", RUN+="/etc/udev/scripts/kindle"
+ENV{DEVTYPE}=="partition", ACTION=="add", SUBSYSTEMS=="usb", RUN+="/usr/local/sbin/udev-auto-mount.sh mount %k &"
+ENV{DEVTYPE}=="partition", ACTION=="remove", SUBSYSTEMS=="usb", RUN+="/usr/local/sbin/udev-auto-mount.sh unmount %k &"

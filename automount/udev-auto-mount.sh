@@ -20,6 +20,8 @@ DEVICE=$2
 DEVICENAME=$(udevadm info --query=property --name=/dev/$DEVICE | grep -i vendor= | awk -F\= '{ print $2}')
 
 mount_device() {
+  echo ${DEVICENAME} > /tmp/devicename_${DEVICE}
+
   MOUNTPT="/media/$DEVICENAME"
   # check input
   if [ -z "$DEVICE" ]; then
@@ -39,8 +41,8 @@ mount_device() {
     # make the mountpoint
     mkdir "${MOUNTPT}"
 
-    fstype=$(blkid /dev/sdb1 | awk '{ print $3 }' | awk -F\" '{ print $2 }')
-    echo fstype = $fstype
+    fstype=$(blkid /dev/$DEVICE  | awk -F\" '{ print $4 }')
+    #fstype=vfat
     # mount the device
     # 
     # If expecting thumbdrives, you probably want 
@@ -53,12 +55,12 @@ mount_device() {
     # 
     # 
     case "$fstype" in
-      vfat)  mount -t vfat -o sync,noatime,uid=1000 /dev/${DEVICE} "${MOUNTPT}"
+      vfat)  mount -t vfat -o user,sync,noatime,uid=1000 /dev/${DEVICE} "${MOUNTPT}"
              ;;
-      ntfs)  mount -t auto -o sync,noatime,uid=1000,locale=en_US.UTF-8 /dev/${DEVICE} "${MOUNTPT}"
+      ntfs)  mount -t auto -o user,sync,noatime,uid=1000,locale=en_US.UTF-8 /dev/${DEVICE} "${MOUNTPT}"
              ;;
       # ext2/3/4 don't like uid option
-      ext*)  mount -t auto -o sync,noatime /dev/${DEVICE} "${MOUNTPT}"
+      ext*)  mount -t auto -o user,sync,noatime /dev/${DEVICE} "${MOUNTPT}"
              ;;
     esac
   
@@ -68,28 +70,38 @@ mount_device() {
 }
 
 unmount_device() {
-  MOUNTPT=$(mount | grep /dev/$DEVICE | awk '{ print $3 }') 
+  DEVICENAME=$(cat /tmp/devicename_${DEVICE})
+  MOUNTPT="/media/$DEVICENAME"
+
   # check input
   if [ -z "$DEVICE" ]; then
     exit 1
+    echo failed_device > /tmp/fail
   fi
 
   if [ -z "$MOUNTPT" ]; then
     exit 1
+    echo failed_mountpt > /tmp/fail
   fi
 
   # test mountpoint - it should exist
   if [ -e "${MOUNTPT}" ]; then
 
     # very naive; just run and pray
-    umount -l "${MOUNTPT}" && rmdir "${MOUNTPT}" && exit 0
+    umount -l "${MOUNTPT}"
+    rm -rf "${MOUNTPT}"
+    rm -f /tmp/devicename_${DEVICE}
+    exit 0
 
-    echo "error: ${MOUNTPT} failed to unmount."
+    echo "error: ${MOUNTPT} failed to unmount." > /tmp/failed
     exit 1
+  else
+    echo failed_unmount > /tmp/fail
   fi
 
   echo "error: ${MOUNTPT} does not exist"
   exit 1
+
 }
 
 case "$1" in
