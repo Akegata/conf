@@ -42,8 +42,8 @@ install_tmuxconf(){
 
 install_vimconf(){
   mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-  git clone https://github.com/tpope/vim-sensible.git $HOME/.vim/bundle/
-  git clone https://github.com/rodjek/vim-puppet.git $HOME/.vim/bundle/
+  git clone https://github.com/tpope/vim-sensible.git $HOME/.vim/bundle/vim-sensible
+  git clone https://github.com/rodjek/vim-puppet.git $HOME/.vim/bundle/vim-puppet
 }
 
 install_packages
