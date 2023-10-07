@@ -16,7 +16,7 @@ install_packages(){
 
   package="git tmux vim"
 
-  ${package_manager} ${package}
+  sudo ${package_manager} ${package}
 }
 
 gitclone(){
