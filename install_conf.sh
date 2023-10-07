@@ -29,11 +29,18 @@ create_symlinks(){
   ln -s $HOME/github/Akegata/conf/vim/.vimrc $HOME/.vimrc
 }
 
-install_tpm(){
+install_tmuxconf(){
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+}
+
+install_vimconf(){
+  mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+  git clone https://github.com/tpope/vim-sensible.git $HOME/.vim/bundle/
+  git clone https://github.com/rodjek/vim-puppet.git $HOME/.vim/bundle/
 }
 
 install_packages
 gitclone
 create_symlinks
-install_tpm
+install_tmuxconf
+install_vimconf
