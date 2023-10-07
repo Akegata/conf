@@ -25,8 +25,15 @@ gitclone(){
 }
 
 create_symlinks(){
+  if [ -f "$HOME/.tmux.conf" ]; then
+    mv $HOME/.tmux.conf $HOME/.tmux.conf.bak
+  fi
   ln -s $HOME/github/Akegata/conf/tmux/.tmux.conf $HOME/.tmux.conf
-  ln -s $HOME/github/Akegata/conf/vim/.vimrc $HOME/.vimrc
+
+  if [ -f "$HOME/.vimrc" ]; then
+    mv $HOME/.vimrc $HOME/.vimrc.bak
+    ln -s $HOME/github/Akegata/conf/vim/.vimrc $HOME/.vimrc
+  fi
 }
 
 install_tmuxconf(){
