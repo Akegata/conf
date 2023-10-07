@@ -20,14 +20,20 @@ install_packages(){
 }
 
 gitclone(){
-  mkdir $HOME/github/Akegata/conf
+  mkdir -p $HOME/github/Akegata/conf
   git clone https://github.com/Akegata/conf.git $HOME/github/Akegata/conf
 }
 
 create_symlinks(){
   ln -s $HOME/github/Akegata/conf/tmux/.tmux.conf $HOME/.tmux.conf
+  ln -s $HOME/github/Akegata/conf/vim/.vimrc $HOME/.vimrc
+}
+
+install tpm(){
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 }
 
 install_packages
 gitclone
 create_symlinks
+install_tpm
