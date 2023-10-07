@@ -19,7 +19,7 @@ install_packages(){
   sudo ${package_manager} ${package}
 }
 
-gitclone(){
+clone_mainrepo(){
   mkdir -p $HOME/github/Akegata/conf
   git clone https://github.com/Akegata/conf.git $HOME/github/Akegata/conf
 }
@@ -47,7 +47,7 @@ install_vimconf(){
 }
 
 install_packages
-gitclone
+clone_mainrepo
 create_symlinks
 install_tmuxconf
 install_vimconf
