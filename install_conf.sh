@@ -19,6 +19,15 @@ install_packages(){
   ${package_manager} ${package}
 }
 
+gitclone(){
+  mkdir $HOME/github/Akegata/conf
+  git clone https://github.com/Akegata/conf.git $HOME/github/Akegata/conf
+}
+
+create_symlinks(){
+  ln -s $HOME/github/Akegata/conf/tmux/.tmux.conf $HOME/.tmux.conf
+}
+
 install_packages
-mkdir $HOME/github/Akegata
-git clone https://github.com/Akegata/conf.git $HOME/github/Akegata
+gitclone
+create_symlinks
