@@ -29,7 +29,7 @@ create_symlinks(){
   ln -s $HOME/github/Akegata/conf/vim/.vimrc $HOME/.vimrc
 }
 
-install tpm(){
+install_tpm(){
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 }
 
