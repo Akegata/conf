@@ -1,8 +1,10 @@
 conf
 ====
-
-wget https://raw.githubusercontent.com/Akegata/conf/master/install_conf.sh <br />
-bash ./install_conf.sh <br />
+## Install configuration files:
+```
+wget https://raw.githubusercontent.com/Akegata/conf/master/install_conf.sh
+bash ./install_conf.sh
+```
 
 ## Install nerd fonts:
 ```
