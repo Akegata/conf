@@ -20,7 +20,7 @@ determine_package_manager(){
 }
 
 clone_mainrepo(){
-  if [ -f "$HOME/github/Akegata/conf" ]; then
+  if [ ! -f "$HOME/github/Akegata/conf" ]; then
     mkdir -p $HOME/github/Akegata/conf
     git clone https://github.com/Akegata/conf.git $HOME/github/Akegata/conf
 
@@ -32,7 +32,7 @@ clone_mainrepo(){
 install_tmuxconf(){
   eval "sudo ${package_manager} tmux"
 
-  if [ -f "~/.tmux/plugins/tpm/" ]; then
+  if [ ! -f "~/.tmux/plugins/tpm/" ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   fi
 
@@ -47,10 +47,10 @@ install_vimconf(){
   eval "sudo ${package_manager} vim"
 
   mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-  if [ -f "~/.vim/bundle/vim-sensible" ]; then
+  if [ ! -f "~/.vim/bundle/vim-sensible" ]; then
     git clone https://github.com/tpope/vim-sensible.git $HOME/.vim/bundle/vim-sensible
   fi
-  if [ -f "~/.vim/bundle/vim-puppet" ]; then
+  if [ ! -f "~/.vim/bundle/vim-puppet" ]; then
     git clone https://github.com/rodjek/vim-puppet.git $HOME/.vim/bundle/vim-puppet
   fi
 
