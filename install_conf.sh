@@ -17,7 +17,7 @@ determine_package_manager(){
 
 check_repo(){
   if [ ! -d "$gitdir_conf" ]; then
-    echo "The conf github repo is not cloned. Exiting."
+    echo "The conf github repo is not cloned. Sync it with -g or -a."
     exit
   fi
 }
