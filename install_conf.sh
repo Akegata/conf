@@ -15,6 +15,13 @@ determine_package_manager(){
   done
 }
 
+check_repo(){
+  if [ ! -d "$gitdir_conf" ]; then
+    echo "The conf github repo is not cloned. Exiting."
+    exit
+  fi
+}
+
 clone_mainrepo(){
   if [ ! -d "$gitdir_conf" ]; then
     mkdir -p $gitdir_conf
@@ -26,11 +33,6 @@ clone_mainrepo(){
 }
 
 install_tmuxconf(){
-  if [ ! -d "$gitdir_conf" ]; then
-    echo "The conf github repo is not cloned. Exiting."
-    exit
-  fi
-
   eval "sudo ${package_manager} tmux"
 
   if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
@@ -49,11 +51,6 @@ install_tmuxconf(){
 }
 
 install_vimconf(){
-  if [ ! -d "$gitdir_conf" ]; then
-    echo "The conf github repo is not cloned. Exiting."
-    exit
-  fi
-
   eval "sudo ${package_manager} vim"
 
   mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
@@ -76,8 +73,8 @@ install_vimconf(){
 }
 
 gitdir_conf=$HOME/github/Akegata/conf
-echo $gitdir_conf
 determine_package_manager
+check_repo
 
 help()
 {
