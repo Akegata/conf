@@ -32,7 +32,7 @@ clone_mainrepo(){
 install_tmuxconf(){
   if [ ! -f "$HOME/github/Akegata/conf" ]; then
     echo "The conf github repo is not cloned. Exiting."
-    exit;;
+    exit ;;
   fi
 
   eval "sudo ${package_manager} tmux"
@@ -51,7 +51,7 @@ install_tmuxconf(){
 install_vimconf(){
   if [ ! -f "$HOME/github/Akegata/conf" ]; then
     echo "The conf github repo is not cloned. Exiting."
-    exit;;
+    exit ;;
   fi
 
   eval "sudo ${package_manager} vim"
