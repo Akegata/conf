@@ -41,11 +41,15 @@ install_tmuxconf(){
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   fi
 
-  if [ -f "$HOME/.tmux.conf" ]; then
-    echo "$HOME/.tmux.conf moved to $HOME/.tmux.conf.bak"
-    mv $HOME/.tmux.conf $HOME/.tmux.conf.bak
+  if [[ -L "$HOME/.tmux.conf" && "$(readlink -f $HOME/.tmux.conf)" == "$HOME/github/Akegata/conf/tmux/.tmux.conf" ]]; then
+    echo "$HOME/.tmux.conf is already a symlink to $HOME/github/Akegata/conf/tmux/.tmux.conf"
+  else
+    if [ -f "$HOME/.tmux.conf" ]; then
+      echo "$HOME/.tmux.conf moved to $HOME/.tmux.conf.bak"
+      mv $HOME/.tmux.conf $HOME/.tmux.conf.bak
+    fi
+    ln -s $HOME/github/Akegata/conf/tmux/.tmux.conf $HOME/.tmux.conf
   fi
-  ln -s $HOME/github/Akegata/conf/tmux/.tmux.conf $HOME/.tmux.conf
 }
 
 install_vimconf(){
@@ -64,11 +68,15 @@ install_vimconf(){
     git clone https://github.com/rodjek/vim-puppet.git $HOME/.vim/bundle/vim-puppet
   fi
 
-  if [ -f "$HOME/.vimrc" ]; then
-    echo "$HOME/.vimrc moved to $HOME/.vimrc.bak"
-    mv $HOME/.vimrc $HOME/.vimrc.bak
+  if [[ -L "$HOME/.vimrc" && "$(readlink -f $HOME/.vimrc)" == "$HOME/github/Akegata/conf/vim/.vimrc" ]]; then
+    echo "$HOME/.vimrc is already a symlink to $HOME/github/Akegata/conf/vim/vimrc"
+  else
+    if [ -f "$HOME/.vimrc" ]; then
+      echo "$HOME/.vimrc moved to $HOME/.vimrc.bak"
+      mv $HOME/.vimrc $HOME/.vimrc.bak
+    fi
+    ln -s $HOME/github/Akegata/conf/vim/.vimrc $HOME/.vimrc
   fi
-  ln -s $HOME/github/Akegata/conf/vim/.vimrc $HOME/.vimrc
 }
 
 determine_package_manager
