@@ -55,12 +55,8 @@ install_vimconf(){
   check_repo
   eval "sudo ${package_manager} vim"
 
-  mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-  if [ ! -d "$HOME/.vim/bundle/vim-sensible" ]; then
-    git clone https://github.com/tpope/vim-sensible.git $HOME/.vim/bundle/vim-sensible
-  fi
-  if [ ! -d "$HOME/.vim/bundle/vim-puppet" ]; then
-    git clone https://github.com/rodjek/vim-puppet.git $HOME/.vim/bundle/vim-puppet
+  if [ -f ~/.vim/autoload/pathogen.vim ]
+    rm ~/.vim/autoload/pathogen.vim
   fi
 
   if [[ -L "$HOME/.vimrc" && "$(readlink -f $HOME/.vimrc)" == "$gitdir_conf/vim/.vimrc" ]]; then
