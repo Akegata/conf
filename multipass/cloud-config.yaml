@@ -1,3 +1,5 @@
+# multipass.exe launch -n testmachine --cloud-init ~/multipass\cloud-config.yaml
+
 #cloud-config
 # Add groups to the system
 # The following example adds the 'admingroup' group with members 'root' and 'sys'
