@@ -16,9 +16,9 @@ determine_package_manager(){
 }
 
 clone_mainrepo(){
-  if [ ! -d "gitdir_conf" ]; then
-    mkdir -p gitdir_conf
-    git clone https://github.com/Akegata/conf.git gitdir_conf
+  if [ ! -d "$gitdir_conf" ]; then
+    mkdir -p $gitdir_conf
+    git clone https://github.com/Akegata/conf.git $gitdir_conf
 
   else
     echo "Repo already cloned."
@@ -26,7 +26,7 @@ clone_mainrepo(){
 }
 
 install_tmuxconf(){
-  if [ ! -d "gitdir_conf" ]; then
+  if [ ! -d "$gitdir_conf" ]; then
     echo "The conf github repo is not cloned. Exiting."
     exit
   fi
@@ -37,19 +37,19 @@ install_tmuxconf(){
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   fi
 
-  if [[ -L "$HOME/.tmux.conf" && "$(readlink -f $HOME/.tmux.conf)" == "gitdir_conf/tmux/.tmux.conf" ]]; then
-    echo "$HOME/.tmux.conf is already a symlink to gitdir_conf/tmux/.tmux.conf"
+  if [[ -L "$HOME/.tmux.conf" && "$(readlink -f $HOME/.tmux.conf)" == "$gitdir_conf/tmux/.tmux.conf" ]]; then
+    echo "$HOME/.tmux.conf is already a symlink to $gitdir_conf/tmux/.tmux.conf"
   else
     if [ -f "$HOME/.tmux.conf" ]; then
       echo "$HOME/.tmux.conf moved to $HOME/.tmux.conf.bak"
       mv $HOME/.tmux.conf $HOME/.tmux.conf.bak
     fi
-    ln -s gitdir_conf/tmux/.tmux.conf $HOME/.tmux.conf
+    ln -s $gitdir_conf/tmux/.tmux.conf $HOME/.tmux.conf
   fi
 }
 
 install_vimconf(){
-  if [ ! -d "gitdir_conf" ]; then
+  if [ ! -d "$gitdir_conf" ]; then
     echo "The conf github repo is not cloned. Exiting."
     exit
   fi
@@ -64,14 +64,14 @@ install_vimconf(){
     git clone https://github.com/rodjek/vim-puppet.git $HOME/.vim/bundle/vim-puppet
   fi
 
-  if [[ -L "$HOME/.vimrc" && "$(readlink -f $HOME/.vimrc)" == "gitdir_conf/vim/.vimrc" ]]; then
-    echo "$HOME/.vimrc is already a symlink to gitdir_conf/vim/vimrc"
+  if [[ -L "$HOME/.vimrc" && "$(readlink -f $HOME/.vimrc)" == "$gitdir_conf/vim/.vimrc" ]]; then
+    echo "$HOME/.vimrc is already a symlink to $gitdir_conf/vim/vimrc"
   else
     if [ -f "$HOME/.vimrc" ]; then
       echo "$HOME/.vimrc moved to $HOME/.vimrc.bak"
       mv $HOME/.vimrc $HOME/.vimrc.bak
     fi
-    ln -s gitdir_conf/vim/.vimrc $HOME/.vimrc
+    ln -s $gitdir_conf/vim/.vimrc $HOME/.vimrc
   fi
 }
 
