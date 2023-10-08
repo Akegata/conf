@@ -2,7 +2,7 @@
 
 install_packages(){
   declare -A osInfo;
-  osInfo[/etc/debian_version]="apt-get install -y"
+  osInfo[/etc/debian_version]="apt-get update && apt-get install -y"
   osInfo[/etc/alpine-release]="apk --update add"
   osInfo[/etc/centos-release]="yum install -y"
   osInfo[/etc/fedora-release]="dnf install -y"
@@ -14,7 +14,7 @@ install_packages(){
       fi
   done
 
-  package="git tmux vim"
+  package="git tmux vim xsel"
 
   sudo ${package_manager} ${package}
 }
