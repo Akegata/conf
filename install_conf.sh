@@ -33,6 +33,7 @@ clone_mainrepo(){
 }
 
 install_tmuxconf(){
+  check_repo
   eval "sudo ${package_manager} tmux"
 
   if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
@@ -51,6 +52,7 @@ install_tmuxconf(){
 }
 
 install_vimconf(){
+  check_repo
   eval "sudo ${package_manager} vim"
 
   mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
@@ -74,7 +76,6 @@ install_vimconf(){
 
 gitdir_conf=$HOME/github/Akegata/conf
 determine_package_manager
-check_repo
 
 help()
 {
