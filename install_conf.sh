@@ -55,7 +55,7 @@ install_vimconf(){
   check_repo
   eval "sudo ${package_manager} vim"
 
-  if [ -f ~/.vim/autoload/pathogen.vim ]
+  if [ -f ~/.vim/autoload/pathogen.vim ]; then
     rm ~/.vim/autoload/pathogen.vim
   fi
 
