@@ -13,6 +13,7 @@ set autoindent
 set incsearch
 set wildmenu
 set wildmode=longest:full,full
+set termguicolors
 
 " Automatically install vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -29,4 +30,8 @@ autocmd VimEnter * if len(filter(values(g:plugs),'!isdirectory(v:val.dir)'))
 call plug#begin()
   Plug 'https://github.com/rodjek/vim-puppet.git'
   Plug 'tpope/vim-sensible'
+  Plug 'embark-theme/vim', { 'as': 'embark' }
+  Plug 'itchyny/lightline.vim'
 call plug#end()
+
+colorscheme embark
