@@ -1,10 +1,3 @@
-" Add Pathogen to handle plugins:
-" mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-" cd ~/.vim/bundle && \
-" git clone https://github.com/tpope/vim-sensible.git && \
-" git clone https://github.com/rodjek/vim-puppet.git
-
-execute pathogen#infect()
 syntax on
 filetype plugin indent on
 set background=dark
@@ -20,3 +13,20 @@ set autoindent
 set incsearch
 set wildmenu
 set wildmode=longest:full,full
+
+" Automatically install vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs),'!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
+call plug#begin()
+  Plug 'https://github.com/rodjek/vim-puppet.git'
+  Plug 'tpope/vim-sensible'
+call plug#end()
