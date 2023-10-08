@@ -37,7 +37,7 @@ install_tmuxconf(){
 
   eval "sudo ${package_manager} tmux"
 
-  if [ ! -d "~/.tmux/plugins/tpm/" ]; then
+  if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   fi
 
@@ -57,10 +57,10 @@ install_vimconf(){
   eval "sudo ${package_manager} vim"
 
   mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-  if [ ! -d "~/.vim/bundle/vim-sensible" ]; then
+  if [ ! -d "$HOME/.vim/bundle/vim-sensible" ]; then
     git clone https://github.com/tpope/vim-sensible.git $HOME/.vim/bundle/vim-sensible
   fi
-  if [ ! -d "~/.vim/bundle/vim-puppet" ]; then
+  if [ ! -d "$HOME/.vim/bundle/vim-puppet" ]; then
     git clone https://github.com/rodjek/vim-puppet.git $HOME/.vim/bundle/vim-puppet
   fi
 
