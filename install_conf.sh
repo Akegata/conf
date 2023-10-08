@@ -30,6 +30,11 @@ clone_mainrepo(){
 }
 
 install_tmuxconf(){
+  if [ ! -f "$HOME/github/Akegata/conf" ]; then
+    echo "The conf github repo is not cloned. Exiting."
+    exit;;
+  fi
+
   eval "sudo ${package_manager} tmux"
 
   if [ ! -f "~/.tmux/plugins/tpm/" ]; then
@@ -44,6 +49,11 @@ install_tmuxconf(){
 }
 
 install_vimconf(){
+  if [ ! -f "$HOME/github/Akegata/conf" ]; then
+    echo "The conf github repo is not cloned. Exiting."
+    exit;;
+  fi
+
   eval "sudo ${package_manager} vim"
 
   mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
