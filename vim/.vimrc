@@ -32,6 +32,7 @@ call plug#begin()
   Plug 'tpope/vim-sensible'
   Plug 'embark-theme/vim', { 'as': 'embark' }
   Plug 'itchyny/lightline.vim'
+  Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 colorscheme embark
