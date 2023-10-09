@@ -8,7 +8,6 @@ set ruler
 set shiftwidth=2
 set softtabstop=2
 set expandtab
-set mouse=a
 set autoindent
 set incsearch
 set wildmenu
