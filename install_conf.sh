@@ -34,7 +34,7 @@ clone_mainrepo(){
 
 install_tmuxconf(){
   check_repo
-  eval "sudo ${package_manager} tmux"
+  eval "sudo ${package_manager} tmux xsel"
 
   if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
