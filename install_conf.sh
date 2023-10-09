@@ -49,6 +49,7 @@ install_tmuxconf(){
     fi
     ln -s $gitdir_conf/tmux/.tmux.conf $HOME/.tmux.conf
   fi
+  ~/.tmux/plugins/tpm/bin/install_plugins
   sed -i 's/  set status-right-length "100"/#  set status-right-length "100"/' ~/.tmux/plugins/tmux/catppuccin.tmux
 }
 
