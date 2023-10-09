@@ -70,6 +70,8 @@ install_vimconf(){
     fi
     ln -s $gitdir_conf/vim/.vimrc $HOME/.vimrc
   fi
+
+  vim +'PlugInstall --sync' +q
 }
 
 gitdir_conf=$HOME/github/Akegata/conf
