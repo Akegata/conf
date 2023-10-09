@@ -49,6 +49,7 @@ install_tmuxconf(){
     fi
     ln -s $gitdir_conf/tmux/.tmux.conf $HOME/.tmux.conf
   fi
+  sed -i 's/  status-right-length "100"/#  status-right-length "100"/' .tmux/plugins/tmux/catppuccin.tmux
 }
 
 install_vimconf(){
