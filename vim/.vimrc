@@ -34,4 +34,7 @@ call plug#begin()
   Plug 'sheerun/vim-polyglot'
 call plug#end()
 
-colorscheme embark
+" Load the embark colorscheme only if it's installed
+if filereadable(expand("~/.vim/plugged/embark/colors/embark.vim"))
+    colorscheme embark
+endif
