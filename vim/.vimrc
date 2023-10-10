@@ -27,6 +27,12 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 " Close the tab if NERDTree is the only window remaining in it.
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endi
 let NERDTreeMouseMode=2
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeWinLeaveWidth = 1
+set fillchars+=vert:\ "White space at the end
+augroup nosplit | au!
+    autocmd ColorScheme * hi VertSplit ctermfg=bg guifg=bg
+augroup end
 
 augroup MouseInNERDTreeOnly
     autocmd!
