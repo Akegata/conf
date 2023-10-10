@@ -3,7 +3,7 @@ conf
 ## Install configuration files:
 ```
 wget https://raw.githubusercontent.com/Akegata/conf/master/install_conf.sh
-bash ./install_conf.sh
+bash ./install_conf.sh -a
 ```
 
 ## Install nerd fonts:
