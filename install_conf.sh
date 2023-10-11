@@ -74,6 +74,14 @@ install_vimconf(){
   vim +'PlugInstall --sync' +qa
 }
 
+install_neovimconf(){
+  if [ -f /etc/debian_version ]; then
+    sudo add-apt-repository ppa:neovim-ppa/unstable -y
+  fi
+
+  eval "sudo ${package_manager} neovim"
+}
+
 gitdir_conf=$HOME/github/Akegata/conf
 determine_package_manager
 
@@ -84,12 +92,13 @@ help()
    echo
    echo "Syntax: install_conf [-a|g|h|i|t|v|]"
    echo "options:"
-   echo "a   Install all conf (currently tmux and vim)"
-   echo "g   Clone github repo"
-   echo "h   Print this help."
-   echo "i3  Install i3 conf."
-   echo "t   Install tmux conf."
-   echo "v   Install vim conf."
+   echo "a    Install all conf (currently tmux and vim)"
+   echo "g    Clone github repo"
+   echo "h    Print this help."
+   echo "i3   Install i3 conf."
+   echo "n    Install nvim conf."
+   echo "t    Install tmux conf."
+   echo "v    Install vim conf."
    echo
 }
 
@@ -109,6 +118,9 @@ while getopts "aightv" option; do
     h) # display Help
       help
       exit;;
+    n) # Install neovim conf.
+      install_neovimconf
+      exit ;;
     t) # Install tmux conf.
       #echo package_manager = ${package_manager} 
       install_tmuxconf
