@@ -102,7 +102,7 @@ help()
    echo
 }
 
-while getopts "aightv" option; do
+while getopts "aighntv" option; do
   case $option in
     a) # Install all conf.
       clone_mainrepo
