@@ -77,9 +77,22 @@ install_vimconf(){
 install_neovimconf(){
   if [ -f /etc/debian_version ]; then
     sudo add-apt-repository ppa:neovim-ppa/unstable -y
+    sudo apt install g++
   fi
 
-  eval "sudo ${package_manager} neovim"
+  eval "sudo ${package_manager} neovim gcc"
+
+  # Backing up conf
+  mv ~/.config/nvim{,.bak}
+  mv ~/.local/share/nvim{,.bak}
+  mv ~/.local/state/nvim{,.bak}
+  mv ~/.cache/nvim{,.bak}
+
+  # Install lazyvim
+  git clone https://github.com/LazyVim/starter ~/.config/nvim
+
+  # Remove lazyvims .git
+  rm -rf ~/.config/nvim/.git
 }
 
 gitdir_conf=$HOME/github/Akegata/conf
