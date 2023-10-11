@@ -15,6 +15,7 @@ set wildmode=longest:full,full
 set termguicolors
 " Set encoding for vim-devicons compatibility
 set encoding=UTF-8
+set term=xterm-256color
 
 " NERDTree config
 nnoremap <C-l> :NERDTreeFocus<CR>

@@ -77,7 +77,7 @@ install_vimconf(){
 install_neovimconf(){
   if [ -f /etc/debian_version ]; then
     sudo add-apt-repository ppa:neovim-ppa/unstable -y
-    sudo apt install g++
+    sudo apt install g++ -y
   fi
 
   eval "sudo ${package_manager} neovim gcc"
@@ -93,6 +93,10 @@ install_neovimconf(){
 
   # Remove lazyvims .git
   rm -rf ~/.config/nvim/.git
+
+  # Create folder for plugins
+  mkdir -p ~/.config/nvim/lua/plugins
+  ln -s $gitdir_conf/nvim/config/nvim/lua/plugins/* ~/.config/nvim/lua/plugins
 }
 
 gitdir_conf=$HOME/github/Akegata/conf
