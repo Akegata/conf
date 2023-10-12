@@ -95,8 +95,8 @@ install_neovimconf(){
   rm -rf ~/.config/nvim/.git
 
   # Create folder for plugins
-  mkdir -p ~/.config/nvim/lua/plugins
-  ln -s $gitdir_conf/nvim/.config/nvim/lua/plugins/* ~/.config/nvim/lua/plugins
+  mkdir -p ~/.config/nvim/lua/
+  ln -s $gitdir_conf/nvim/.config/nvim/lua/plugins ~/.config/nvim/lua/plugins
 }
 
 gitdir_conf=$HOME/github/Akegata/conf
