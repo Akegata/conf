@@ -80,7 +80,7 @@ install_neovimconf(){
     sudo apt install g++ -y
   fi
 
-  eval "sudo ${package_manager} neovim gcc"
+  eval "sudo ${package_manager} neovim gcc make"
 
   # Backing up conf
   mv ~/.config/nvim{,.bak}
@@ -96,7 +96,7 @@ install_neovimconf(){
 
   # Create folder for plugins
   mkdir -p ~/.config/nvim/lua/plugins
-  ln -s $gitdir_conf/nvim/config/nvim/lua/plugins/* ~/.config/nvim/lua/plugins
+  ln -s $gitdir_conf/nvim/.config/nvim/lua/plugins/* ~/.config/nvim/lua/plugins
 }
 
 gitdir_conf=$HOME/github/Akegata/conf
