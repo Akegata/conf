@@ -161,6 +161,9 @@ install_ohmybash(){
   else
     echo "Oh my bash already installed."
   fi
+
+  source ~/.bashrc
+  clear
 }
 
 gitdir_conf=$HOME/github/Akegata/conf
