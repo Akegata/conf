@@ -145,6 +145,8 @@ install_ohmybash(){
     bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
     mv ~/.bashrc ~/.bashrc_omb
     ln -s $gitdir_conf/ohmybash/.bashrc $HOME/.bashrc
+  else
+    echo "Oh my bash already installed."
   fi
 }
 
