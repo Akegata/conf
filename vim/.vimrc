@@ -31,9 +31,6 @@ let NERDTreeMouseMode=2
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeWinLeaveWidth = 1
 set fillchars+=vert:\ "White space at the end
-augroup nosplit | au!
-    autocmd ColorScheme * hi VertSplit ctermfg=bg guifg=bg
-augroup end
 
 augroup MouseInNERDTreeOnly
     autocmd!
@@ -58,6 +55,7 @@ call plug#begin()
   Plug 'https://github.com/rodjek/vim-puppet.git'
   Plug 'tpope/vim-sensible'
   Plug 'embark-theme/vim', { 'as': 'embark' }
+  Plug 'catppuccin/vim', { 'as': 'catppuccin' }  
   Plug 'itchyny/lightline.vim'
   Plug 'sheerun/vim-polyglot'
   Plug 'preservim/nerdtree'
@@ -65,6 +63,6 @@ call plug#begin()
 call plug#end()
 
 " Load the embark colorscheme only if it's installed
-if filereadable(expand("~/.vim/plugged/embark/colors/embark.vim"))
-    colorscheme embark
+if filereadable(expand("~/.vim/plugged/catppuccin/colors/catppuccin_mocha.vim"))
+    colorscheme catppuccin_mocha
 endif

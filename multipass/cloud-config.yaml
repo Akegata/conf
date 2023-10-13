@@ -1,4 +1,4 @@
-# multipass.exe launch -n testmachine --bridged --cloud-init ~/multipass\cloud-config.yaml
+# multipass.exe launch -n testmachine --memory 4G --bridged --cloud-init ~/multipass\cloud-config.yaml
 
 #cloud-config
 # Add groups to the system
