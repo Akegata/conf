@@ -140,11 +140,31 @@ install_neovimconf(){
 
 }
 
-install_ohmybash(){
   if [ ! -d ~/.oh-my-bash ]; then
     bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
     sed -i '/^OSH_THEME/s/.*/OSH_THEME="agnoster"/' ~/.bashrc
     echo "alias vi='nvim'" >> $HOME/.bashrc
+}
+
+
+install_ohmybash(){
+  if [ ! -d ~/.oh-my-bash ]; then
+  	git clone https://github.com/ohmybash/oh-my-bash.git ~/.oh-my-bash
+
+	if [ -f ~/.bashrc ]; then
+		cp ~/.bashrc ~/.bashrc.orig
+
+	fi
+	cp ~/.oh-my-bash/templates/bashrc.osh-template ~/.bashrc
+	# Set the Oh My Bash theme in .bashrc
+	sed -i '/^OSH_THEME/s/.*/OSH_THEME="agnoster"/' ~/.bashrc
+
+	# Add an alias to .bashrc
+	echo 'alias vi="nvim"' >>~/.bashrc
+
+	# Source .bashrc to apply changes in the current session
+	source ~/.bashrc
+
   else
     echo "Oh my bash already installed."
   fi
