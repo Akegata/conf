@@ -103,7 +103,7 @@ install_neovimconf(){
 
   plugins_gitdir="$gitdir_conf/nvim/.config/nvim/lua/plugins"
   plugins_target_dir="$HOME/.config/nvim/lua/plugins"
-  keymaps_file=".config2/nvim/lua/config/keymaps.lua"
+  keymaps_file=".config/nvim/lua/config/keymaps.lua"
 
   # Make symlinks for all the plugins.
   for source_file in "$plugins_gitdir"/*; do
