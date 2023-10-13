@@ -125,6 +125,7 @@ while getopts "aighntv" option; do
       clone_mainrepo
       install_tmuxconf
       install_vimconf
+      install_neovimconf
       exit ;;
     i) # Install i3 conf.
       echo "Install i3"
