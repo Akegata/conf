@@ -143,8 +143,8 @@ install_neovimconf(){
 install_ohmybash(){
   if [ ! -d ~/.oh-my-bash ]; then
     bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
-    mv ~/.bashrc ~/.bashrc_omb
-    ln -s $gitdir_conf/ohmybash/.bashrc $HOME/.bashrc
+    sed -i '/^OSH_THEME/s/.*/OSH_THEME="agnoster"/' ~/.bashrc
+    echo "alias vi='nvim'" >> $HOME/.bashrc
   else
     echo "Oh my bash already installed."
   fi
