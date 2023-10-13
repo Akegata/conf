@@ -140,6 +140,14 @@ install_neovimconf(){
 
 }
 
+install_ohmybash(){
+  if [ ! -d ~/.oh-mybash ]; then
+    bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
+    mv ~/.bashrc ~/.bashrc_omb
+    ln -s $gitdir_conf/ohmybash/.bashrc $HOME/.bashrc
+  fi
+}
+
 gitdir_conf=$HOME/github/Akegata/conf
 determine_package_manager
 
@@ -148,25 +156,27 @@ help()
    # Display help
    echo "Add tmux, i3 and vim config."
    echo
-   echo "Syntax: install_conf [-a|g|h|i|t|v|]"
+   echo "Syntax: install_conf [-a|g|h|i|n|o|t|v|]"
    echo "options:"
    echo "a    Install all conf (currently tmux and vim)"
    echo "g    Clone github repo"
    echo "h    Print this help."
    echo "i3   Install i3 conf."
+   echo "o    Install oh my bash."
    echo "n    Install nvim conf."
    echo "t    Install tmux conf."
    echo "v    Install vim conf."
    echo
 }
 
-while getopts "aighntv" option; do
+while getopts "aighnotv" option; do
   case $option in
     a) # Install all conf.
       clone_mainrepo
       install_tmuxconf
       install_vimconf
       install_neovimconf
+      install_ohmybash
       exit ;;
     i) # Install i3 conf.
       echo "Install i3"
@@ -179,6 +189,9 @@ while getopts "aighntv" option; do
       exit;;
     n) # Install neovim conf.
       install_neovimconf
+      exit ;;
+    o) # Install ohmybash conf.
+      install_ohmybash
       exit ;;
     t) # Install tmux conf.
       #echo package_manager = ${package_manager} 
