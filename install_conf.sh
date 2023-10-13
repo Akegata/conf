@@ -141,7 +141,7 @@ install_neovimconf(){
 }
 
 install_ohmybash(){
-  if [ ! -d ~/.oh-mybash ]; then
+  if [ ! -d ~/.oh-my-bash ]; then
     bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
     mv ~/.bashrc ~/.bashrc_omb
     ln -s $gitdir_conf/ohmybash/.bashrc $HOME/.bashrc
