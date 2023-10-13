@@ -82,21 +82,60 @@ install_neovimconf(){
 
   eval "sudo ${package_manager} neovim gcc make"
 
-  # Backing up conf
-  mv ~/.config/nvim{,.bak}
-  mv ~/.local/share/nvim{,.bak}
-  mv ~/.local/state/nvim{,.bak}
-  mv ~/.cache/nvim{,.bak}
+  if [ ! -f ~/.config/nvim/lua/config/lazy.lua ]; then
+    # Backing up conf
+    mv ~/.config/nvim{,.bak}
+    mv ~/.local/share/nvim{,.bak}
+    mv ~/.local/state/nvim{,.bak}
+    mv ~/.cache/nvim{,.bak}
 
-  # Install lazyvim
-  git clone https://github.com/LazyVim/starter ~/.config/nvim
+    # Install lazyvim
+    git clone https://github.com/LazyVim/starter ~/.config/nvim
 
-  # Remove lazyvims .git
-  rm -rf ~/.config/nvim/.git
+    # Remove lazyvims .git
+    rm -rf ~/.config/nvim/.git
+  fi
 
   # Create folder for plugins
-  mkdir -p ~/.config/nvim/lua/plugins
-  ln -s $gitdir_conf/nvim/.config/nvim/lua/plugins/*.lua ~/.config/nvim/lua/plugins
+  if [ ! -d ~/.config/nvim/lua/plugins ]; then
+    mkdir -p ~/.config/nvim/lua/plugins
+  fi
+
+  plugins_gitdir="$gitdir_conf/nvim/.config/nvim/lua/plugins"
+  plugins_target_dir="$HOME/.config/nvim/lua/plugins"
+
+  # Make symlinks for all the plugins.
+  for source_file in "$plugins_gitdir"/*; do
+    file_name=$(basename "$source_file")
+    target_file="$plugins_target_dir/$file_name"
+ 
+    if [ -e "$target_file" ]; then
+      if [ -L "$target_file" ]; then
+        # If it exists and is a symlink, remove the existing symlink
+        rm "$target_file"
+        echo "Removed existing symlink $target_file"
+      else
+        # If it exists and is not a symlink, rename the existing file to .bak
+        mv "$target_file" "$target_file.bak"
+        echo "Renamed $target_file to $target_file.bak"
+      fi
+    fi
+  
+    # Create a symbolic link from source to target directory
+    ln -s "$source_file" "$target_file"
+    echo "Created symlink from $source_file to $target_file"
+  done
+
+  if [[ -L "$HOME/.config/nvim/lua/config/keymaps.lua" && "$(readlink -f $HOME/.config/nvim/lua/config/keymaps.lua)" == "$gitdir_conf/nvim/.config/nvim/lua/config/keymaps.lua" ]]; then
+    echo "$HOME/.config/nvim/lua/config/keymaps.lua is already a symlink to $gitdir_conf/nvim/.config/nvim/lua/config/keymaps.lua"
+  else
+    if [ -f "$HOME/.config/nvim/lua/config/keymaps.lua" ]; then
+      echo "$HOME/.config/nvim/lua/config/keymaps.lua moved to $HOME/.config/nvim/lua/config/keymaps.lua.bak"
+      mv $HOME/.config/nvim/lua/config/keymaps.lua $HOME/.config/nvim/lua/config/keymaps.lua.bak
+    fi
+    ln -s $gitdir_conf/nvim/.config/nvim/lua/config/keymaps.lua $HOME/.config/nvim/lua/config/keymaps.lua
+  fi
+
 }
 
 gitdir_conf=$HOME/github/Akegata/conf
