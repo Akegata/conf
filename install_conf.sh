@@ -28,7 +28,8 @@ clone_mainrepo(){
     git clone https://github.com/Akegata/conf.git $gitdir_conf
 
   else
-    echo "Repo already cloned."
+    echo "Syncing repo."
+    cd $gitdir_conf && git pull
   fi
 }
 
