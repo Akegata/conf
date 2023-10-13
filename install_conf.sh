@@ -103,6 +103,7 @@ install_neovimconf(){
 
   plugins_gitdir="$gitdir_conf/nvim/.config/nvim/lua/plugins"
   plugins_target_dir="$HOME/.config/nvim/lua/plugins"
+  keymaps_file=".config2/nvim/lua/config/keymaps.lua"
 
   # Make symlinks for all the plugins.
   for source_file in "$plugins_gitdir"/*; do
@@ -126,14 +127,14 @@ install_neovimconf(){
     echo "Created symlink from $source_file to $target_file"
   done
 
-  if [[ -L "$HOME/.config/nvim/lua/config/keymaps.lua" && "$(readlink -f $HOME/.config/nvim/lua/config/keymaps.lua)" == "$gitdir_conf/nvim/.config/nvim/lua/config/keymaps.lua" ]]; then
-    echo "$HOME/.config/nvim/lua/config/keymaps.lua is already a symlink to $gitdir_conf/nvim/.config/nvim/lua/config/keymaps.lua"
+  if [[ -L "$HOME/$keymaps_file" && "$(readlink -f $HOME/$keymaps_file)" == "$gitdir_conf/nvim/$keymaps_file" ]]; then
+    echo "$HOME/$keymaps_file is already a symlink to $gitdir_conf/nvim/$keymaps_file"
   else
-    if [ -f "$HOME/.config/nvim/lua/config/keymaps.lua" ]; then
-      echo "$HOME/.config/nvim/lua/config/keymaps.lua moved to $HOME/.config/nvim/lua/config/keymaps.lua.bak"
-      mv $HOME/.config/nvim/lua/config/keymaps.lua $HOME/.config/nvim/lua/config/keymaps.lua.bak
+    if [ -f "$HOME/$keymaps_file" ]; then
+      echo "$HOME/$keymaps_file moved to $HOME/$keymaps_file.bak"
+      mv $HOME/$keymaps_file $HOME/$keymaps_file.bak
     fi
-    ln -s $gitdir_conf/nvim/.config/nvim/lua/config/keymaps.lua $HOME/.config/nvim/lua/config/keymaps.lua
+    ln -s $gitdir_conf/nvim/$keymaps_file $HOME/$keymaps_file
   fi
 
 }
