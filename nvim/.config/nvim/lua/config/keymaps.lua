@@ -3,3 +3,4 @@
 -- Add any additional keymaps here
 --
 vim.api.nvim_set_keymap('n', '<C-o>', ':Neotree toggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-l>', ':Neotree focus<CR>', { noremap = true, silent = true })

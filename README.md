@@ -11,3 +11,22 @@ bash ./install_conf.sh -a
 cd ~ && mkdir Meslo && cd Meslo && wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Meslo.zip unzip Meslo.zip && cp *.ttf ~/.fonts && fc-cache -fv
 ```
 Choose MesloLGS Nerd Font Regular as font in the terminal.
+
+## Custom keymaps:
+```
+tmux:
+Ctrl+f = command
+Ctrl+! = split window vertically
+Ctrl+" = split window horizontally
+Ctrl+y = toggle pane synchronization
+Shift+arrow = select pane
+
+vim:
+Ctrl+o = Toggle NERDtree
+Ctrl+l = NERDtree focus
+Ctrl+p = NERDtreeFind
+
+neovim:
+Ctrl+o = Toggle Neo-tree
+Ctrl+l = Neo-tree focus
+```
