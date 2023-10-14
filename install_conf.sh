@@ -80,21 +80,25 @@ install_neovimconf(){
   if [ -f /etc/debian_version ]; then
     sudo add-apt-repository ppa:neovim-ppa/unstable -y
     sudo apt install g++ -y
+    eval "sudo ${package_manager} neovim gcc make"
   fi
 
-  if [ -f /etc/centos_version ]; then
-    dnf install compat-lua-libs libtermkey libtree-sitter libvterm luajit luajit2.1-luv msgpack unibilium xsel
+  if [ -f /etc/centos-release ]; then
+    if [ ! -f ~/.local/bin/nvim ]; then
+      sudo dnf install epel-release -y
+      sudo dnf install compat-lua-libs libtermkey libtree-sitter libvterm luajit luajit2.1-luv msgpack unibilium xsel make gcc -y
 
-    wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
-    tar xvzf /home/user/downloads/nvim-linux64.tar.gz
-    mv /home/user/downloads/nvim-linux64 ~/.local/share/nvim-linux64
+      wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
+      tar xvzf nvim-linux64.tar.gz
+      mv nvim-linux64 ~/.local/share/
 
-    mkdir ~/.local/bin
-    cd ~/.local/bin/
-    ln -sf ~/.local/share/nvim-linux64/bin/nvim .local/bin/
+      mkdir -p ~/.local/bin
+      ln -sf ~/.local/share/nvim-linux64/bin/nvim ~/.local/bin/nvim
+    else 
+      echo "Nvim already installed"
+    fi
   fi
 
-  eval "sudo ${package_manager} neovim gcc make"
 
   if [ ! -f ~/.config/nvim/lua/config/lazy.lua ]; then
     # Backing up conf
