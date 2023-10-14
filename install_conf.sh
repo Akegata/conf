@@ -86,7 +86,7 @@ install_neovimconf(){
   if [ -f /etc/centos-release ]; then
     if [ ! -f ~/.local/bin/nvim ]; then
       sudo dnf install epel-release -y
-      sudo dnf install compat-lua-libs libtermkey libtree-sitter libvterm luajit luajit2.1-luv msgpack unibilium xsel make gcc -y
+      sudo dnf install compat-lua-libs libtermkey libtree-sitter libvterm luajit luajit2.1-luv msgpack unibilium xsel make gcc gcc-c++ -y
 
       wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
       tar xvzf nvim-linux64.tar.gz
