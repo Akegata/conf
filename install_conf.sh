@@ -15,6 +15,16 @@ determine_package_manager(){
   done
 }
 
+install_default_packages(){
+  if [ -f /etc/centos-release ]; then
+    if [ ! -f ~/.local/bin/nvim ]; then
+      eval "sudo ${package_manager} epel-release"
+    fi
+  fi
+
+  eval "sudo ${package_manager} git"
+}
+
 check_repo(){
   if [ ! -d "$gitdir_conf" ]; then
     echo "The conf github repo is not cloned. Sync it with -g or -a."
@@ -24,7 +34,7 @@ check_repo(){
 
 clone_mainrepo(){
   if [ ! -d "$gitdir_conf" ]; then
-    eval "sudo ${package_manager} git"
+#    eval "sudo ${package_manager} git"
     mkdir -p $gitdir_conf
     git clone https://github.com/Akegata/conf.git $gitdir_conf
 
@@ -87,7 +97,6 @@ install_neovimconf(){
 
   if [ -f /etc/centos-release ]; then
     if [ ! -f ~/.local/bin/nvim ]; then
-      eval "sudo ${package_manager} epel-release"
       eval "sudo ${package_manager} compat-lua-libs libtermkey libtree-sitter libvterm luajit luajit2.1-luv msgpack unibilium xsel make gcc gcc-c++"
 
       wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
@@ -188,6 +197,7 @@ install_ohmybash(){
 
 gitdir_conf=$HOME/github/Akegata/conf
 determine_package_manager
+install_default_packages
 
 help()
 {
