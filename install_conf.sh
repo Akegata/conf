@@ -92,6 +92,7 @@ install_vimconf(){
 }
 
 install_neovimconf(){
+  check_repo
   if [ -f /etc/debian_version ]; then
     sudo add-apt-repository ppa:neovim-ppa/unstable -y
     eval "sudo ${package_manager} neovim gcc make g++"
@@ -171,6 +172,7 @@ install_neovimconf(){
 }
 
 install_ohmybash(){
+  check_repo
   if [ ! -d ~/.oh-my-bash ]; then
     eval "sudo ${package_manager} mercurial"
   	git clone https://github.com/ohmybash/oh-my-bash.git ~/.oh-my-bash
