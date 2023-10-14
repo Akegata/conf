@@ -81,6 +81,18 @@ install_neovimconf(){
     sudo apt install g++ -y
   fi
 
+  if [ -f /etc/centos_version ]; then
+    dnf install compat-lua-libs libtermkey libtree-sitter libvterm luajit luajit2.1-luv msgpack unibilium xsel
+
+    wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
+    tar xvzf /home/user/downloads/nvim-linux64.tar.gz
+    mv /home/user/downloads/nvim-linux64 ~/.local/share/nvim-linux64
+
+    mkdir ~/.local/bin
+    cd ~/.local/bin/
+    ln -sf ~/.local/share/nvim-linux64/bin/nvim .local/bin/
+  fi
+
   eval "sudo ${package_manager} neovim gcc make"
 
   if [ ! -f ~/.config/nvim/lua/config/lazy.lua ]; then
