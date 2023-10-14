@@ -82,14 +82,13 @@ install_vimconf(){
 install_neovimconf(){
   if [ -f /etc/debian_version ]; then
     sudo add-apt-repository ppa:neovim-ppa/unstable -y
-    sudo apt install g++ -y
-    eval "sudo ${package_manager} neovim gcc make"
+    eval "sudo ${package_manager} neovim gcc make g++"
   fi
 
   if [ -f /etc/centos-release ]; then
     if [ ! -f ~/.local/bin/nvim ]; then
-      sudo dnf install epel-release -y
-      sudo dnf install compat-lua-libs libtermkey libtree-sitter libvterm luajit luajit2.1-luv msgpack unibilium xsel make gcc gcc-c++ -y
+      eval "sudo ${package_manager} epel-release"
+      eval "sudo ${package_manager} compat-lua-libs libtermkey libtree-sitter libvterm luajit luajit2.1-luv msgpack unibilium xsel make gcc gcc-c++"
 
       wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
       tar xvzf nvim-linux64.tar.gz
@@ -162,24 +161,25 @@ install_neovimconf(){
 
 install_ohmybash(){
   if [ ! -d ~/.oh-my-bash ]; then
+    eval "sudo ${package_manager} mercurial"
   	git clone https://github.com/ohmybash/oh-my-bash.git ~/.oh-my-bash
 
-	if [ -f ~/.bashrc ]; then
-		cp ~/.bashrc ~/.bashrc.orig
+  	if [ -f ~/.bashrc ]; then
+  		cp ~/.bashrc ~/.bashrc.orig
 
-	fi
-	cp ~/.oh-my-bash/templates/bashrc.osh-template ~/.bashrc
-	# Set the Oh My Bash theme in .bashrc
-	sed -i '/^OSH_THEME/s/.*/OSH_THEME="agnoster"/' ~/.bashrc
+  	fi
+  	cp ~/.oh-my-bash/templates/bashrc.osh-template ~/.bashrc
+  	# Set the Oh My Bash theme in .bashrc
+  	sed -i '/^OSH_THEME/s/.*/OSH_THEME="agnoster"/' ~/.bashrc
 
-	# Add an alias to .bashrc
-	echo 'alias vi="nvim"' >>~/.bashrc
+  	# Add an alias to .bashrc
+  	echo 'alias vi="nvim"' >>~/.bashrc
 
-	# Source .bashrc to apply changes in the current session
-	source ~/.bashrc
+  	# Source .bashrc to apply changes in the current session
+  	source ~/.bashrc
 
   else
-    echo "Oh my bash already installed."
+      echo "Oh my bash already installed."
   fi
 
   source ~/.bashrc
