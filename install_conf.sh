@@ -35,7 +35,6 @@ check_repo(){
 
 clone_mainrepo(){
   if [ ! -d "$gitdir_conf" ]; then
-#    eval "sudo ${package_manager} git"
     mkdir -p $gitdir_conf
     git clone https://github.com/Akegata/conf.git $gitdir_conf
 

@@ -32,4 +32,4 @@ Ctrl+l = Neo-tree focus
 ```
 ## Info
 
-Installation tested on CentOS Stream 8 and Ubuntu 22.04.
+Installation tested on CentOS Stream 8, 9 and Ubuntu 22.04.
