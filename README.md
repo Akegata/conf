@@ -30,3 +30,6 @@ neovim:
 Ctrl+o = Toggle Neo-tree
 Ctrl+l = Neo-tree focus
 ```
+## Info
+
+Installation tested on CentOS Stream 8 and Ubuntu 22.04.

@@ -17,6 +17,7 @@ determine_package_manager(){
 
 install_default_packages(){
   if [ -f /etc/centos-release ]; then
+    rhel_version=$(cat /etc/redhat-release | grep -oE '[0-9]+' | head -1)
     if [ ! -f ~/.local/bin/nvim ]; then
       eval "sudo ${package_manager} epel-release"
     fi
@@ -47,7 +48,7 @@ clone_mainrepo(){
 install_tmuxconf(){
   check_repo
   if [ -f /etc/centos-release ]; then
-    sudo dnf install http://galaxy4.net/repo/galaxy4-release-8-current.noarch.rpm -y
+    sudo dnf install http://galaxy4.net/repo/galaxy4-release-$rhel_version-current.noarch.rpm -y
   fi
   eval "sudo ${package_manager} tmux xsel"
 
