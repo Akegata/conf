@@ -36,6 +36,9 @@ clone_mainrepo(){
 
 install_tmuxconf(){
   check_repo
+  if [ -f /etc/centos-release ]; then
+    sudo dnf install http://galaxy4.net/repo/galaxy4-release-8-current.noarch.rpm -y
+  fi
   eval "sudo ${package_manager} tmux xsel"
 
   if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
