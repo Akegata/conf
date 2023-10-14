@@ -192,7 +192,7 @@ determine_package_manager
 help()
 {
    # Display help
-   echo "Add tmux, i3 and vim config."
+   echo "Add ohmybash, nvim, tmux and vim config."
    echo
    echo "Syntax: install_conf [-a|g|h|i|n|o|t|v|]"
    echo "options:"
