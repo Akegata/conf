@@ -36,5 +36,5 @@ Installation tested on CentOS Stream 8, 9 and Ubuntu 22.04.
 
 ## Todo
 
-Add batcat configuration. < br \>
+Add batcat configuration. <br/>
 Add i3 configuration.
