@@ -51,7 +51,7 @@ install_bat(){
   elif [[ -f /etc/centos-release  ]]; then
     curl -o bat.zip -L https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-v0.24.0-i686-unknown-linux-musl.tar.gz
     tar -zxf bat.zip
-    sudo mv bat-v0.24.0-i686-unknown-linux-musl /usr/local/bat
+    sudo mv bat-v0.24.0-i686-unknown-linux-musl/bat /usr/local/bin/
   fi
   if [ ! -f ~/.config/bat/config ]; then
     mkdir -p ~/.config/bat/themes
