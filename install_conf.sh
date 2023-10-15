@@ -44,6 +44,22 @@ clone_mainrepo(){
   fi
 }
 
+install_bat(){
+  check_repo
+  if [ -f /etc/debian_version ]; then
+    eval "sudo ${package_manager} bat"
+  elif [[ -f /etc/centos-release  ]]; then
+    curl -o bat.zip -L https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-v0.24.0-i686-unknown-linux-musl.tar.gz
+    tar -zxf bat.zip
+    sudo mv bat-v0.24.0-i686-unknown-linux-musl /usr/local/bat
+  fi
+  if [ ! -f ~/.config/bat/config ]; then
+    mkdir -p ~/.config/bat/themes
+    ln -s $gitdir_conf/bat/.config/bat/config $HOME/.config/bat/config 
+    ln -s $gitdir_conf/bat/.config/bat/themes/Catppuccin-mocha.tmTheme $HOME/.config/bat/themes/
+  fi
+}
+
 install_tmuxconf(){
   check_repo
   if [ $rhel_version == 8 ]; then
@@ -207,9 +223,10 @@ help()
    # Display help
    echo "Add ohmybash, nvim, tmux and vim config."
    echo
-   echo "Syntax: install_conf [-a|g|h|i|n|o|t|v|]"
+   echo "Syntax: install_conf [-a|b|g|h|i|n|o|t|v|]"
    echo "options:"
    echo "a    Install all conf (currently tmux and vim)"
+   echo "b    Install bat"
    echo "g    Clone github repo"
    echo "h    Print this help."
    echo "i3   Install i3 conf."
@@ -220,15 +237,19 @@ help()
    echo
 }
 
-while getopts "aighnotv" option; do
+while getopts "abighnotv" option; do
   case $option in
     a) # Install all conf.
       clone_mainrepo
+      install_bat
       install_tmuxconf
       install_vimconf
       install_neovimconf
       install_ohmybash
       exit ;;
+    b) # Install bat
+      install_bat
+      exit;;
     i) # Install i3 conf.
       echo "Install i3"
       exit ;;
