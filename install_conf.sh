@@ -57,6 +57,7 @@ install_bat(){
     mkdir -p ~/.config/bat/themes
     ln -s $gitdir_conf/bat/.config/bat/config $HOME/.config/bat/config 
     ln -s $gitdir_conf/bat/.config/bat/themes/Catppuccin-mocha.tmTheme $HOME/.config/bat/themes/
+    bat cache --build
   fi
 }
 
