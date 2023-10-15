@@ -23,7 +23,7 @@ install_default_packages(){
     fi
   fi
 
-  eval "sudo ${package_manager} git"
+  eval "sudo ${package_manager} git curl"
 }
 
 check_repo(){
