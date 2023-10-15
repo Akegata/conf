@@ -143,3 +143,7 @@ source "$OSH"/oh-my-bash.sh
 if command -v nvim &>/dev/null; then
 	alias vi='nvim'
 fi
+
+if command -v batcat &>/dev/null; then
+	alias cat='batcat'
+fi
