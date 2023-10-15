@@ -201,8 +201,7 @@ install_ohmybash(){
   	# Set the Oh My Bash theme in .bashrc
   	sed -i '/^OSH_THEME/s/.*/OSH_THEME="agnoster"/' ~/.bashrc
 
-  	# Add an alias to .bashrc
-  	echo 'alias vi="nvim"' >>~/.bashrc
+    ln -s $gitdir_conf/ohmybash/.bashrc $HOME/.bashrc
 
   	# Source .bashrc to apply changes in the current session
   	source ~/.bashrc
