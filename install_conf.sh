@@ -23,7 +23,7 @@ install_default_packages(){
     fi
   fi
 
-  eval "sudo ${package_manager} git curl"
+  eval "sudo ${package_manager} git"
 }
 
 check_repo(){
@@ -194,7 +194,7 @@ install_ohmybash(){
   	git clone https://github.com/ohmybash/oh-my-bash.git ~/.oh-my-bash
 
   	if [ -f ~/.bashrc ]; then
-  		mv ~/.bashrc ~/.bashrc.bak
+  		mv ~/.bashrc ~/.bashrc.orig
   	fi
 #  	cp ~/.oh-my-bash/templates/bashrc.osh-template ~/.bashrc
 #  	# Set the Oh My Bash theme in .bashrc
