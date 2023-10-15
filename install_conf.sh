@@ -194,12 +194,11 @@ install_ohmybash(){
   	git clone https://github.com/ohmybash/oh-my-bash.git ~/.oh-my-bash
 
   	if [ -f ~/.bashrc ]; then
-  		cp ~/.bashrc ~/.bashrc.orig
-
+  		mv ~/.bashrc ~/.bashrc.bak
   	fi
-  	cp ~/.oh-my-bash/templates/bashrc.osh-template ~/.bashrc
-  	# Set the Oh My Bash theme in .bashrc
-  	sed -i '/^OSH_THEME/s/.*/OSH_THEME="agnoster"/' ~/.bashrc
+#  	cp ~/.oh-my-bash/templates/bashrc.osh-template ~/.bashrc
+#  	# Set the Oh My Bash theme in .bashrc
+#  	sed -i '/^OSH_THEME/s/.*/OSH_THEME="agnoster"/' ~/.bashrc
 
     ln -s $gitdir_conf/ohmybash/.bashrc $HOME/.bashrc
 
