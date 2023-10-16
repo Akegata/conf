@@ -145,5 +145,9 @@ if command -v nvim &>/dev/null; then
 fi
 
 if command -v batcat &>/dev/null; then
-	alias cat='batcat'
+	alias cat='batcat --paging=never'
+fi
+
+if command -v batcat &>/dev/null; then
+	alias less='batcat'
 fi
