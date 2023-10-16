@@ -152,6 +152,7 @@ install_neovimconf(){
   plugins_gitdir="$gitdir_conf/nvim/.config/nvim/lua/plugins"
   plugins_target_dir="$HOME/.config/nvim/lua/plugins"
   keymaps_file=".config/nvim/lua/config/keymaps.lua"
+  options_file=".config/nvim/lua/config/options.lua"
 
   # Make symlinks for all the plugins.
   for source_file in "$plugins_gitdir"/*; do
@@ -185,6 +186,15 @@ install_neovimconf(){
     ln -s $gitdir_conf/nvim/$keymaps_file $HOME/$keymaps_file
   fi
 
+  if [[ -L "$HOME/$options_file" && "$(readlink -f $HOME/$options_file)" == "$gitdir_conf/nvim/$options_file" ]]; then
+    echo "$HOME/$options_file is already a symlink to $gitdir_conf/nvim/$options_file"
+  else
+    if [ -f "$HOME/$options_file" ]; then
+      echo "$HOME/$options_file moved to $HOME/$options_file.bak"
+      mv $HOME/$options_file $HOME/$keymaps_file.bak
+    fi
+    ln -s $gitdir_conf/nvim/$options_file $HOME/$options_file
+  fi
 }
 
 install_ohmybash(){
