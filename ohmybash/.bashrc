@@ -113,6 +113,9 @@ plugins=(
 source "$OSH"/oh-my-bash.sh
 
 # User configuration
+
+export PATH=$PATH:$HOME/.local/bin
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
