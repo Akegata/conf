@@ -1,35 +1,6 @@
--- Pull in the wezterm API
-local wezterm = require("wezterm")
-
--- This table will hold the configuration.
+local defaults = require("defaults")
+local keybindings = require("keybindings")
 local config = {}
-
--- In newer versions of wezterm, use the config_builder which will
--- help provide clearer error messages
-if wezterm.config_builder then
-	config = wezterm.config_builder()
-end
-
--- This is where you actually apply your config choices
-
--- For example, changing the color scheme:
--- config.color_scheme = "AdventureTime"
-
-config.use_fancy_tab_bar = true
-config.hide_tab_bar_if_only_one_tab = true
-config.window_decorations = "RESIZE"
-
-local act = wezterm.action
-
-config.keys = {
-  -- Rebind OPT-Left, OPT-Right as ALT-b, ALT-f respectively to match Terminal.app behavior
-  {
-    key = 'F7',
-    mods = 'SHIFT',
-    action = act.SendString "Test"
-  },
-}
-
-
--- and finally, return the configuration to wezterm
+defaults.apply_to_config(config)
+keybindings.apply_to_config(config)
 return config
