@@ -14,9 +14,22 @@ end
 
 -- For example, changing the color scheme:
 -- config.color_scheme = "AdventureTime"
+
 config.use_fancy_tab_bar = true
 config.hide_tab_bar_if_only_one_tab = true
 config.window_decorations = "RESIZE"
+
+local act = wezterm.action
+
+config.keys = {
+  -- Rebind OPT-Left, OPT-Right as ALT-b, ALT-f respectively to match Terminal.app behavior
+  {
+    key = 'F7',
+    mods = 'SHIFT',
+    action = act.SendString "Test"
+  },
+}
+
 
 -- and finally, return the configuration to wezterm
 return config
