@@ -212,6 +212,8 @@ install_ohmybash(){
 
     ln -s $gitdir_conf/ohmybash/.bashrc $HOME/.bashrc
 
+    ln -s $gitdir_conf/ohmybash/.oh-my-bash/custom/themes/* $HOME/.oh-my-bash/custom/themes/
+
   	# Source .bashrc to apply changes in the current session
   	source ~/.bashrc
 
