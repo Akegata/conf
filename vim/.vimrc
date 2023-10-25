@@ -18,8 +18,8 @@ set encoding=UTF-8
 set term=xterm-256color
 
 " NERDTree config
-nnoremap <C-l> :NERDTreeFocus<CR>
-nnoremap <C-o> :NERDTreeToggle<CR>
+nnoremap <C-o> :NERDTreeFocus<CR>
+nnoremap <C-l> :NERDTreeToggle<CR>
 "noremap <C-p> <NOP>
 nnoremap <C-p> :NERDTreeFind<CR>
 let NERDTreeShowHidden=1
