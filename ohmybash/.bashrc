@@ -1,4 +1,4 @@
-# Enable the subsequent settings only in interactive sessions
+/# Enable the subsequent settings only in interactive sessions
 case $- in
 *i*) ;;
 *) return ;;
@@ -19,7 +19,7 @@ OSH_THEME="agnoster"
 # OMB_HYPHEN_SENSITIVE="false"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_OSH_DAYS=13
