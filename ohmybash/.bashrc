@@ -154,3 +154,7 @@ fi
 if command -v batcat &>/dev/null; then
 	alias less='batcat'
 fi
+
+if command -v logo-ls &>/dev/null; then
+	alias ls='logo-ls'
+fi
