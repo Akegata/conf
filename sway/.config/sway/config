@@ -197,3 +197,8 @@ exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSO
 
 bindgesture swipe:right workspace prev
 bindgesture swipe:left workspace next
+
+# swaymsg -t get_outputs
+#output DP-2 pos 0,0
+#output DP-1 pos 3840,0
+#output DP-4 pos 7280,0
