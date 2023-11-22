@@ -198,6 +198,7 @@ exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSO
 bindgesture swipe:right workspace prev
 bindgesture swipe:left workspace next
 
+# /etc/gdm3/custom.conf #WaylandEnable=false 
 # swaymsg -t get_outputs
 #output DP-2 pos 0,0
 #output DP-1 pos 3840,0
