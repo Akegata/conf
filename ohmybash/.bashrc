@@ -168,3 +168,5 @@ if [[ $WAYLAND_DISPLAY ]]; then
 	export SDL_VIDEODRIVER=wayland
 	export _JAVA_AWT_WM_NONREPARENTING=1
 fi
+
+alias gitcommit='git add . ; git commit && git push origin $(git branch --show-current)'

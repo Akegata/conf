@@ -19,6 +19,7 @@ end
 -- function that accepts the config object, like this:
 function module.apply_to_config(config)
 	--	config.font_size = 20
+	config.audible_bell = "Disabled"
 	config.use_fancy_tab_bar = true
 	config.hide_tab_bar_if_only_one_tab = true
 	config.window_decorations = "RESIZE"
