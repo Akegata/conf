@@ -149,6 +149,7 @@ bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+bindsym Control+Mod1+h exec --no-startup-id systemctl hibernate
 
 bar {
   font pango:JetBrainsMono Nerd Font 10
@@ -174,9 +175,6 @@ input "type:keyboard" {
 default_border none
 
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-
-bindgesture swipe:right workspace prev
-bindgesture swipe:left workspace next
 
 ##########################
 #### Display configuration

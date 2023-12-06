@@ -181,3 +181,5 @@ export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SO
 alias gitcommit='git add . ; git commit && git push origin $(git branch --show-current)'
 
 alias n='nnn'
+
+alias tor-browser='~/.local/bin/tor-browser/Browser/start-tor-browser'
