@@ -156,7 +156,6 @@ if command -v logo-ls &>/dev/null; then
 	alias ls='logo-ls'
 fi
 
-<<<<<<< HEAD
 if command -v nnn-nerd-static &>/dev/null; then
 	alias nnn='nnn-nerd-static'
 	alias n='nnn-nerd-static'
