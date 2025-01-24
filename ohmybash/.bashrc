@@ -183,3 +183,6 @@ alias gitcommit='git add . ; git commit && git push origin $(git branch --show-c
 alias n='nnn'
 
 alias tor-browser='~/.local/bin/tor-browser/Browser/start-tor-browser'
+alias wake-steamdeck="wakeonlan 00:e0:4c:68:03:0c"
+
+export _JAVA_AWT_WM_NONREPARENTING=1

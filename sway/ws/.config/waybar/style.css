@@ -5,18 +5,17 @@ font-size: 15px;*/
 }
 
 window#waybar {
-	background: #292b2e;
+	background: #0a0a0a;
 	color: #fdf6e3;
 }
 
 #custom-right-arrow-dark,
 #custom-left-arrow-dark {
-	color: #1a1a1a;
+	color: #0a0a0a;
 }
 #custom-right-arrow-light,
 #custom-left-arrow-light {
-	color: #292b2e;
-	background: #1a1a1a;
+	color: #292b2e; background: #0a0a0a;
 }
 
 #workspaces,
@@ -29,8 +28,9 @@ window#waybar {
 #battery,
 #disk,
 #mpris,
+#taskbar,
 #tray {
-	background: #1a1a1a;
+	background: #0a0a0a;
 }
 
 #workspaces button {
@@ -47,8 +47,8 @@ window#waybar {
 	text-shadow: inherit;
 }
 #workspaces button:hover {
-	background: #1a1a1a;
-	border: #1a1a1a;
+	background: #0a0a0a;
+	border: #0a0a0a;
 	padding: 0 3px;
 }
 
@@ -96,11 +96,32 @@ window#waybar {
 	color: #b58900;
 }
 
+#pulseaudio-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+#pulseaudio-slider trough {
+    min-height: 10px;
+    min-width: 80px;
+    border-radius: 0px;
+    background-color: black;
+}
+#pulseaudio-slider highlight {
+    min-width: 1px;
+    border-radius: 5px;
+    background-color: green;
+}
+
 #clock,
 #pulseaudio,
 #memory,
 #cpu,
 #battery,
+#taskbar,
 #disk {
 	padding: 0 10px;
 }

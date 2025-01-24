@@ -8,62 +8,23 @@
 
 	"modules-left": [
 		"sway/workspaces",
-		"custom/right-arrow-dark",
 		"sway/mode",
 	],
 	"modules-center": [
-		"custom/left-arrow-dark",
-		"clock#1",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"clock#2",
-		"custom/right-arrow-dark",
-		"custom/right-arrow-light",
-		"clock#3",
-		"custom/right-arrow-dark"
+		"sway/window",
 	],
 	"modules-right": [
-		"custom/left-arrow-dark",
+    "wlr/taskbar",
 		"pulseaudio",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"tray"
+		"clock#1",
+		"clock#3",
+		"clock#2",
 	],
-
-	"custom/left-arrow-dark": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/left-arrow-light": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/right-arrow-dark": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/right-arrow-light": {
-		"format": "",
-		"tooltip": false
-	},
 
 	"sway/workspaces": {
 /*		"disable-scroll": true,*/
 		"format": "{name}"
 	},
-
-  "mpris": {
-	  "format": " {player_icon} {dynamic} ",
-	  "format-paused": " {status_icon} <i>{dynamic}</i> ",
-	  "player-icons": {
-	  	"default": "▶",
-	  	"mpv": "🎵"
-	  },
-	  "status-icons": {
-	  	"paused": "⏸"
-	  },
-	  // "ignored-players": ["firefox"]
-  },
 
 	"clock#1": {
 		"format": "{:%a}",
@@ -78,14 +39,9 @@
 		"tooltip": false
 	},
 
-  "sway/language": {
-    "format": "{} ",
-    "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
-  },
-
 	"pulseaudio": {
 		"format": "{icon} {volume:2}%",
-		"format-bluetooth": "{icon}  {volume}%",
+		"format-bluetooth": "{icon}  {volume}% ",
 		"format-muted": "MUTE",
 		"format-icons": {
 			"headphones": "",
@@ -98,38 +54,6 @@
 		"on-click": "pamixer -t",
 		"on-click-right": "pavucontrol"
 	},
-	"memory": {
-		"interval": 5,
-		"format": "Mem {}%"
-	},
-	"cpu": {
-		"interval": 5,
-		"format": "CPU {usage:2}%"
-	},
-	"battery": {
-    "interval": 5,
-		"states": {
-			"good": 95,
-			"warning": 30,
-			"critical": 15
-		},
-		"format": "{icon} {capacity}%",
-		"format-icons": [
-			" ",
-			" ",
-			" ",
-			" ",
-			" "
-		]
-	},
-	"disk": {
-		"interval": 5,
-		"format": "Disk {percentage_used:2}%",
-		"path": "/"
-	},
-	"tray": {
-		"icon-size": 20
-	}
 },
 
 // Xiaomi display
@@ -140,32 +64,17 @@
 
 	"modules-left": [
 		"sway/workspaces",
-		"custom/right-arrow-dark",
 		"sway/mode",
 	],
 	"modules-center": [
-		"custom/left-arrow-dark",
-		"clock#2",
-		"custom/right-arrow-dark",
+		"sway/window",
 	],
 	"modules-right": [
-		"custom/left-arrow-dark",
     "mpris",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
 		"pulseaudio",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"memory",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"cpu",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"disk",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"tray"
+    "wlr/taskbar",
+		"tray",
+		"clock#2",
 	],
 
 	"custom/left-arrow-dark": {
@@ -189,6 +98,12 @@
 /*		"disable-scroll": true,*/
 		"format": "{name}"
 	},
+
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
+  },
 
   "mpris": {
 	  "format": " {player_icon} {dynamic} ",
@@ -223,7 +138,7 @@
 
 	"pulseaudio": {
 		"format": "{icon} {volume:2}%",
-		"format-bluetooth": "{icon}  {volume}%",
+		"format-bluetooth": "{icon}  {volume}% ",
 		"format-muted": "MUTE",
 		"format-icons": {
 			"headphones": "",
@@ -279,26 +194,18 @@
 
 	"modules-left": [
 		"sway/workspaces",
-		"custom/right-arrow-dark",
 		"sway/mode",
 	],
 	"modules-center": [
-		"custom/left-arrow-dark",
-		"clock#1",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"clock#2",
-		"custom/right-arrow-dark",
-		"custom/right-arrow-light",
-		"clock#3",
-		"custom/right-arrow-dark"
+		"sway/window",
 	],
 	"modules-right": [
-		"custom/left-arrow-dark",
+		"memory",
+		"cpu",
+		"disk",
 		"pulseaudio",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"tray"
+    "wlr/taskbar",
+		"clock#2",
 	],
 
 	"custom/left-arrow-dark": {
@@ -327,11 +234,13 @@
 	  "format": " {player_icon} {dynamic} ",
 	  "format-paused": " {status_icon} <i>{dynamic}</i> ",
 	  "player-icons": {
-	  	"default": "▶",
+	  	//"default": "▶",
+	  	"default": "",
 	  	"mpv": "🎵"
 	  },
 	  "status-icons": {
-	  	"paused": "⏸"
+	  	"paused": ""
+	  	//"paused": "⏸"
 	  },
 	  // "ignored-players": ["firefox"]
   },
@@ -348,6 +257,16 @@
 		"format": "{:%y-%m-%d}",
 		"tooltip": false
 	},
+
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 14,
+    "icon-theme": "Numix-Circle",
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "active-first": "true"
+  },
 
   "sway/language": {
     "format": "{} ",
@@ -374,8 +293,20 @@
 		"format": "Mem {}%"
 	},
 	"cpu": {
-		"interval": 5,
-		"format": "CPU {usage:2}%"
+		"interval": 1,
+		//"format": "CPU {usage:2}%"
+    "format": "CPU {icon0} {icon1} {icon2} {icon3} {icon4} {icon5} {icon6} {icon7} {icon8} {icon9} {icon10} {icon11}",
+    //"format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+         "format-icons": [
+          "<span color='#6c71c4'>▁</span>", // green
+          "<span color='#6c71c4'>▂</span>", // blue
+          "<span color='#6c71c4'>▃</span>", // white
+          "<span color='#6c71c4'>▄</span>", // white
+          "<span color='#ffffa5'>▅</span>", // yellow
+          "<span color='#ffffa5'>▆</span>", // yellow
+          "<span color='#ff9977'>▇</span>", // orange
+          "<span color='#dd532e'>█</span>"  // red
+     ]
 	},
 	"battery": {
     "interval": 5,

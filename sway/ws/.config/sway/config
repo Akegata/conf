@@ -14,14 +14,16 @@ bindsym $mod+K exec MOZ_ENABLE_WAYLAND=1 firefox
 #bindsym Shift+Mod4+H exec /usr/local/bin/toggle_hdmi.sh
 
 # suspend laptop
-bindsym XF86Launch1 exec systemctl suspend
+#bindsym XF86Launch1 exec systemctl suspend
+#bindsym XF86Launch1 exec systemctl hybrid-sleep
 
 # kill focused window
 bindsym Mod1+F4 kill
 
 # start dmenu (a program launcher)
 #bindsym Mod1+space exec dmenu_run
-bindsym Mod1+space exec dmenu-wl_run
+bindsym Mod1+space exec rofi -combi-modi drun -show combi -icon-theme "Papirus" -show-icons
+#bindsym Mod1+space exec dmenu-wl_run
 #bindsym Mod1+space exec  ~/run_dmenuwlrun.sh
 
 
@@ -52,7 +54,8 @@ bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+w layout default
+#bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -149,7 +152,11 @@ bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-bindsym Control+Mod1+h exec --no-startup-id systemctl hibernate
+bindsym F8 exec /home/akegata/.local/bin/switch_audio_output.sh
+bindsym Control+Mod1+s exec /home/akegata/.local/bin/switch_audio_output.sh
+bindsym Control+Mod1+h exec --no-startup-id systemctl hybrid-sleep
+bindsym Control+Mod1+j exec --no-startup-id /home/akegata/.local/bin/enable-hibernate-reboot.sh
+bindsym Control+Mod1+w exec --no-startup-id remmina -c ~/.config/remmina/windows.remmina
 
 bar {
   font pango:JetBrainsMono Nerd Font 10
@@ -162,9 +169,16 @@ bar {
   }
 }
 
-exec nm-applet
+exec /usr/bin/amixer -c 2 sset "Auto-Mute Mode" Disabled
+exec nm-applet --indicator
 exec blueman-applet
 exec udiskie
+exec syncthingtray --wait
+exec sudo openrgb -p /home/akegata/.config/OpenRGB/off.orp
+exec xhost +
+exec xhost si:localuser:root
+exec lxpolkit
+#exec /usr/lib/polkit-1/polkitd --no-debug
 
 output * bg #000000 solid_color
 
@@ -175,6 +189,12 @@ input "type:keyboard" {
 default_border none
 
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Material-Black-Plum'
+    gsettings set $gnome-schema icon-theme 'Material-Black-Plum'
+}
 
 ##########################
 #### Display configuration
