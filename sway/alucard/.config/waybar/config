@@ -9,7 +9,7 @@
 		"custom/right-arrow-dark",
 		"sway/mode",
 	],
-	"modules-center": [
+	/*"modules-center": [
 		"custom/left-arrow-dark",
 		"clock#1",
 		"custom/left-arrow-light",
@@ -19,8 +19,11 @@
 		"custom/right-arrow-light",
 		"clock#3",
 		"custom/right-arrow-dark"
-	],
+	],*/
 	"modules-right": [
+		"custom/left-arrow-dark",
+    "mpris",
+		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
 		"pulseaudio",
 		"custom/left-arrow-light",
@@ -35,6 +38,9 @@
 /*		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
 		"disk",*/
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"clock#2",
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
 		"tray"
@@ -61,6 +67,19 @@
 		"disable-scroll": true,
 		"format": "{name}"
 	},
+
+  "mpris": {
+	  "format": " {player_icon} {dynamic} ",
+	  "format-paused": " {status_icon} <i>{dynamic}</i> ",
+	  "player-icons": {
+	  	"default": "▶",
+	  	"mpv": "🎵"
+	  },
+	  "status-icons": {
+	  	"paused": "⏸"
+	  },
+	  // "ignored-players": ["firefox"]
+  },
 
 	"clock#1": {
 		"format": "{:%a}",

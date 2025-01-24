@@ -27,6 +27,7 @@ window#waybar {
 #cpu,
 #battery,
 #disk,
+#mpris,
 #tray {
 	background: #1a1a1a;
 }
@@ -48,6 +49,9 @@ window#waybar {
 	padding: 0 3px;
 }
 
+#mpris {
+	color: #d736ff;
+}
 #pulseaudio {
 	color: #268bd2;
 }

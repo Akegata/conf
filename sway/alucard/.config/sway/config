@@ -101,7 +101,7 @@ bindsym $mod+Shift+r exec "sway reload"
 bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'"
 
 # remove borders
-bindsym F8 border none
+bindsym F8 border toggle
 bindsym F7 border normal
 
 # Lock screen
@@ -173,17 +173,22 @@ exec udiskie
 exec xset s off
 exec xsetroot -solid black
 exec xset m 8 2
-### Disable touch pad
-### exec xinput --set-prop 11 'Device Enabled' 0
-###
+#### Disable touch pad
+#### exec xinput --set-prop 11 'Device Enabled' 0
+####
 exec xinput --set-prop 12 'libinput Accel Speed' -0.748201
 exec xsettingsd
 #exec battery-monitor
-#exec no-startup-id i3-battery-popup.sh
-#exec --no-startup-id xss-lock -- ~/.config/i3/lock.sh
+##exec no-startup-id i3-battery-popup.sh
+##exec --no-startup-id xss-lock -- ~/.config/i3/lock.sh
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
 exec flameshot
 exec gnome-settings-daemon
+#exec xhost +local:
+#exec xhost +
+#exec xhost si:localuser:root
+exec lxpolkit
+exec swayidle -w before-sleep 'swaylock -f -c 000000'
 
 output * bg #000000 solid_color
 
@@ -192,8 +197,15 @@ input "type:keyboard" {
 }
 
 default_border none
+default_floating_border none
+#border none
 
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+}
 
 bindgesture swipe:right workspace prev
 bindgesture swipe:left workspace next

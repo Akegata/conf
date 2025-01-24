@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Set environment variables
+#export XDG_RUNTIME_DIR=/run/user/$(id -u)
+#export WAYLAND_DISPLAY=wayland-0
+
 # Take a screenshot with grim
 grim /tmp/screen.png
 
