@@ -46,11 +46,6 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
       autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
 
-" Run PlugInstall if there are missing plugins
-autocmd VimEnter * if len(filter(values(g:plugs),'!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
-
 call plug#begin()
   Plug 'https://github.com/rodjek/vim-puppet.git'
   Plug 'tpope/vim-sensible'
@@ -60,9 +55,18 @@ call plug#begin()
   Plug 'sheerun/vim-polyglot'
   Plug 'preservim/nerdtree'
   Plug 'ryanoasis/vim-devicons'
+  Plug 'tpope/vim-obsession'
 call plug#end()
 
 " Load the embark colorscheme only if it's installed
 if filereadable(expand("~/.vim/plugged/catppuccin/colors/catppuccin_mocha.vim"))
     colorscheme catppuccin_mocha
 endif
+
+" Run PlugInstall if there are missing plugins
+"autocmd VimEnter * if len(filter(values(g:plugs),'!isdirectory(v:val.dir)'))
+"  \| PlugInstall --sync | source $MYVIMRC
+"\| endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
