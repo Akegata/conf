@@ -158,3 +158,12 @@ fi
 if command -v logo-ls &>/dev/null; then
 	alias ls='logo-ls'
 fi
+
+if command -v nnn-nerd-static &>/dev/null; then
+	alias nnn='nnn-nerd-static'
+	alias n='nnn-nerd-static'
+fi
+
+docker-compose() {
+	docker compose -f /docker/docker-compose.yml --env-file /docker/.env "$@" --no-recreate
+}
