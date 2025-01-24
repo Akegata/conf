@@ -143,6 +143,23 @@ export PATH=$PATH:$HOME/.local/bin
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
 
+# Set the locale to make sense
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US:en
+export LC_CTYPE=sv_SE.UTF-8
+export LC_NUMERIC="sv_SE.UTF-8"
+export LC_TIME="en_GB.UTF-8"
+export LC_COLLATE="sv_SE.UTF-8"
+export LC_MONETARY="sv_SE.UTF-8"
+export LC_MESSAGES="en_US.UTF-8"
+export LC_PAPER="en_US.UTF-8"
+export LC_NAME="en_US.UTF-8"
+export LC_ADDRESS="en_US.UTF-8"
+export LC_TELEPHONE="en_US.UTF-8"
+export LC_MEASUREMENT="sv_SE.UTF-8"
+export LC_IDENTIFICATION="en_US.UTF-8"
+export LC_ALL=
+
 if command -v nvim &>/dev/null; then
 	alias vi='nvim'
 fi
