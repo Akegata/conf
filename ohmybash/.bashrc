@@ -149,9 +149,6 @@ fi
 
 if command -v batcat &>/dev/null; then
 	alias cat='batcat --paging=never'
-fi
-
-if command -v batcat &>/dev/null; then
 	alias less='batcat'
 fi
 
@@ -159,6 +156,7 @@ if command -v logo-ls &>/dev/null; then
 	alias ls='logo-ls'
 fi
 
+<<<<<<< HEAD
 if command -v nnn-nerd-static &>/dev/null; then
 	alias nnn='nnn-nerd-static'
 	alias n='nnn-nerd-static'
@@ -167,3 +165,34 @@ fi
 docker-compose() {
 	docker compose -f /docker/docker-compose.yml --env-file /docker/.env "$@" --no-recreate
 }
+
+if [[ $WAYLAND_DISPLAY ]]; then
+	# Session
+	export XDG_SESSION_TYPE=wayland
+	export XDG_SESSION_DESKTOP=sway
+	export XDG_CURRENT_DESKTOP=sway
+
+	# Wayland stuff
+	export MOZ_ENABLE_WAYLAND=1
+	export QT_QPA_PLATFORM=wayland
+	export SDL_VIDEODRIVER=wayland
+	export _JAVA_AWT_WM_NONREPARENTING=1
+fi
+
+# This second option relies on you're terminal using the catppuccin theme and well use true catppuccin colors:
+BLK="03" CHR="03" DIR="04" EXE="02" REG="07" HARDLINK="05" SYMLINK="05" MISSING="08" ORPHAN="01" FIFO="06" SOCK="03" UNKNOWN="01"
+
+# Export Context Colors
+export NNN_COLORS="#04020301;4231"
+
+# Finally Export the set file colors ( Both options require this)
+export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$UNKNOWN"
+
+alias gitcommit='git add . ; git commit && git push origin $(git branch --show-current)'
+
+alias n='nnn'
+
+alias tor-browser='~/.local/bin/tor-browser/Browser/start-tor-browser'
+alias wake-steamdeck="wakeonlan 00:e0:4c:68:03:0c"
+
+export _JAVA_AWT_WM_NONREPARENTING=1

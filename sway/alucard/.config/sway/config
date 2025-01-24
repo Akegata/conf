@@ -1,0 +1,205 @@
+set $mod Mod4
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+T exec wezterm
+bindsym $mod+K exec MOZ_ENABLE_WAYLAND=1 firefox
+#bindsym $mod+K exec export MOZ_ENABLE_WAYLAND=1 && firefox
+
+## Switch HDMI output
+#bindsym Shift+Mod4+H exec /usr/local/bin/toggle_hdmi.sh
+
+# suspend laptop
+bindsym XF86Launch1 exec systemctl suspend
+
+# kill focused window
+bindsym Mod1+F4 kill
+
+# start dmenu (a program launcher)
+#bindsym Mod1+space exec dmenu_run
+#bindsym Mod1+space exec dmenu-wl_run -i
+bindsym Mod1+space exec  ~/run_dmenuwlrun.sh
+
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+# split in vertical orientation
+bindsym $mod+v split v
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+Ctrl+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# move to the previous / next workspace
+bindsym $mod+Next workspace next
+bindsym Mod1+Tab workspace next
+bindsym $mod+Prior workspace prev
+bindsym Mod1+Shift+Tab workspace prev
+
+# reload the configuration file
+bindsym $mod+Shift+c exec "sway reload"
+bindsym $mod+Shift+r exec "sway reload"
+bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'"
+
+# remove borders
+bindsym F8 border none
+bindsym F7 border normal
+
+# Lock screen
+bindsym $mod+Escape exec ~/.config/sway/swaylock_blur.sh
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
+
+bindsym Mod1+Up exec --no-startup-id /usr/local/bin/volume raise
+bindsym Mod1+Down exec --no-startup-id /usr/local/bin/volume lower
+bindsym Control+Mod1+h exec --no-startup-id /usr/local/bin/LE_WH-1000XM3.sh
+bindsym Control+Mod1+m exec --no-startup-id /usr/local/bin/volume mute
+bindsym Control+Mod1+s exec --no-startup-id flameshot gui
+
+bar {
+  font pango:JetBrainsMono Nerd Font 10
+  swaybar_command waybar
+	position top
+  tray_output primary
+  tray_padding 0
+    colors {
+    background #000000
+  }
+}
+
+# change focus
+#bindsym $mod+h focus left
+#bindsym $mod+j focus down
+#bindsym $mod+k focus up
+#bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+#bindsym $mod+Left focus left
+
+#for_window [class="google-chrome"] border pixel 1
+
+exec xinput set-prop 12 "libinput Accel Speed" -0.2
+exec xrandr --dpi 210
+exec nm-applet
+exec blueman-applet
+exec udiskie
+exec xset s off
+exec xsetroot -solid black
+exec xset m 8 2
+### Disable touch pad
+### exec xinput --set-prop 11 'Device Enabled' 0
+###
+exec xinput --set-prop 12 'libinput Accel Speed' -0.748201
+exec xsettingsd
+#exec battery-monitor
+#exec no-startup-id i3-battery-popup.sh
+#exec --no-startup-id xss-lock -- ~/.config/i3/lock.sh
+exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+exec flameshot
+exec gnome-settings-daemon
+
+output * bg #000000 solid_color
+
+input "type:keyboard" {
+    xkb_layout se
+}
+
+default_border none
+
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+bindgesture swipe:right workspace prev
+bindgesture swipe:left workspace next
+
+# /etc/gdm3/custom.conf #WaylandEnable=false 
+# swaymsg -t get_outputs
+#output DP-2 pos 0,0
+#output DP-1 pos 3840,0
+#output DP-4 pos 7280,0
