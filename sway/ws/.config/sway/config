@@ -149,14 +149,25 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 bindsym Control+Mod1+m exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+#bindsym XF86AudioPlay exec playerctl play-pause
+#bindsym XF86AudioNext exec playerctl next
+#bindsym XF86AudioPrev exec playerctl previous
 bindsym F8 exec /home/akegata/.local/bin/switch_audio_output.sh
 bindsym Control+Mod1+s exec /home/akegata/.local/bin/switch_audio_output.sh
 bindsym Control+Mod1+h exec --no-startup-id systemctl hybrid-sleep
 bindsym Control+Mod1+j exec --no-startup-id /home/akegata/.local/bin/enable-hibernate-reboot.sh
 bindsym Control+Mod1+w exec --no-startup-id remmina -c ~/.config/remmina/windows.remmina
+### Bindings to make ctrl+any audio key switch to the next sink.
+# Cycle through players
+bindsym Ctrl+XF86AudioPlay exec ~/.config/sway/cycle_players.sh
+bindsym Ctrl+XF86AudioNext exec ~/.config/sway/cycle_players.sh
+bindsym Ctrl+XF86AudioPrev exec ~/.config/sway/cycle_players.sh
+bindsym Ctrl+XF86AudioStop exec ~/.config/sway/cycle_players.sh
+bindsym Ctrl+XF86AudioMute exec ~/.config/sway/cycle_players.sh
+bindsym XF86AudioPlay exec playerctl --player=$(cat ~/.config/sway/current_player) play-pause
+bindsym XF86AudioNext exec playerctl --player=$(cat ~/.config/sway/current_player) next
+bindsym XF86AudioPrev exec playerctl --player=$(cat ~/.config/sway/current_player) previous
+exec --no-startup-id ~/.config/sway/player-monitor.sh
 
 bar {
   font pango:JetBrainsMono Nerd Font 10
