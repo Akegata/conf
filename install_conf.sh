@@ -6,6 +6,7 @@ determine_package_manager(){
   osInfo[/etc/alpine-release]="apk --update add"
   osInfo[/etc/centos-release]="yum install -y"
   osInfo[/etc/fedora-release]="dnf install -y"
+  osInfo[/etc/almalinux-release]="dnf install -y"
 
   for f in ${!osInfo[@]}
   do
