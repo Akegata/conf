@@ -35,7 +35,8 @@
 		"tooltip": false
 	},
 	"clock#3": {
-		"format": "{:%y-%m-%d}",
+		"format": "{:%d/%m-%Y}",
+		/*"format": "{:%y-%m-%d}",*/
 		"tooltip": false
 	},
 
@@ -116,6 +117,7 @@
 	  	"paused": "⏸"
 	  },
 	  // "ignored-players": ["firefox"]
+    "signal": 8
   },
 
 	"clock#1": {

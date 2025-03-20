@@ -81,9 +81,9 @@ OMB_USE_SUDO=true
 # Example format: completions=(ssh git bundler gem pip pip3)
 # Add wisely, as too many completions slow down shell startup.
 completions=(
-	git
-	composer
-	ssh
+  git
+  composer
+  ssh
 )
 
 # Which aliases would you like to load? (aliases can be found in ~/.oh-my-bash/aliases/*)
@@ -91,7 +91,8 @@ completions=(
 # Example format: aliases=(vagrant composer git-avh)
 # Add wisely, as too many aliases slow down shell startup.
 aliases=(
-	general
+  general
+  nvim
 )
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-bash/plugins/*)
@@ -99,8 +100,8 @@ aliases=(
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-	git
-	bashmarks
+  git
+  bashmarks
 )
 
 # Which plugins would you like to conditionally load? (plugins can be found in ~/.oh-my-bash/plugins/*)
@@ -114,7 +115,7 @@ source "$OSH"/oh-my-bash.sh
 
 # User configuration
 
-export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/node_modules/tree-sitter-cli/
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -161,38 +162,38 @@ export LC_IDENTIFICATION="en_US.UTF-8"
 export LC_ALL=
 
 if command -v nvim &>/dev/null; then
-	alias vi='nvim'
+  alias vi='nvim'
 fi
 
 if command -v batcat &>/dev/null; then
-	alias cat='batcat --paging=never'
-	alias less='batcat'
+  alias cat='batcat --paging=never'
+  alias less='batcat'
 fi
 
 if command -v logo-ls &>/dev/null; then
-	alias ls='logo-ls'
+  alias ls='logo-ls'
 fi
 
 if command -v nnn-nerd-static &>/dev/null; then
-	alias nnn='nnn-nerd-static'
-	alias n='nnn-nerd-static'
+  alias nnn='nnn-nerd-static'
+  alias n='nnn-nerd-static'
 fi
 
 docker-compose() {
-	docker compose -f /docker/docker-compose.yml --env-file /docker/.env "$@" --no-recreate
+  docker compose -f /docker/docker-compose.yml --env-file /docker/.env "$@" --no-recreate
 }
 
 if [[ $WAYLAND_DISPLAY ]]; then
-	# Session
-	export XDG_SESSION_TYPE=wayland
-	export XDG_SESSION_DESKTOP=sway
-	export XDG_CURRENT_DESKTOP=sway
+  # Session
+  export XDG_SESSION_TYPE=wayland
+  export XDG_SESSION_DESKTOP=sway
+  export XDG_CURRENT_DESKTOP=sway
 
-	# Wayland stuff
-	export MOZ_ENABLE_WAYLAND=1
-	export QT_QPA_PLATFORM=wayland
-	export SDL_VIDEODRIVER=wayland
-	export _JAVA_AWT_WM_NONREPARENTING=1
+  # Wayland stuff
+  export MOZ_ENABLE_WAYLAND=1
+  export QT_QPA_PLATFORM=wayland
+  export SDL_VIDEODRIVER=wayland
+  export _JAVA_AWT_WM_NONREPARENTING=1
 fi
 
 # This second option relies on you're terminal using the catppuccin theme and well use true catppuccin colors:
