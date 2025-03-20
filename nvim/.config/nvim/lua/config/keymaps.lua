@@ -6,7 +6,10 @@ vim.api.nvim_set_keymap("n", "<C-p>", ":Neotree toggle<CR>", { noremap = true, s
 vim.api.nvim_set_keymap("n", "<C-o>", ":Neotree focus<CR>", { noremap = true, silent = true })
 
 -- Move left with Ctrl+hjkl
--- vim.api.nvim_del_keymap('i', '<C-k>')  -- Remove mapping for C-k
+vim.api.nvim_set_keymap('n', '<C-h>', '<Left>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-j>', '<Down>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-k>', '<Up>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-l>', '<Right>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<C-h>', '<Left>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<C-j>', '<Down>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<C-k>', '<Up>', { noremap = true, silent = true })
