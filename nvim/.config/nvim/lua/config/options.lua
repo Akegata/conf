@@ -7,3 +7,7 @@ local function vmap(keys, fn, desc)
 end
 
 vmap("<LeftRelease>", '"*ygv', "yank on mouse selection")
+
+local opt = vim.opt
+-- integration works automatically. Requires Neovim >= 0.10.0
+opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard

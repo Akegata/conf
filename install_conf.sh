@@ -32,6 +32,19 @@ check_repo(){
     echo "The conf github repo is not cloned. Sync it with -g or -a."
     exit
   fi
+   33   │ fi
+    1   }
+    2
+    3   clone_mainrepo(){
+    4   │ if [ ! -d "$gitdir_conf" ]; then
+    5   │ │ mkdir -p $gitdir_conf
+    6   │ │ git clone https://github.com/Akegata/conf.git $gitdir_conf
+    7   │
+    8   │ else
+    9   │ │ echo "Syncing repo."
+   10   │ │ cd $gitdir_conf && git pull
+   11   │ fi
+   12   }
 }
 
 clone_mainrepo(){
