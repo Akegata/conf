@@ -3,7 +3,7 @@
 // Philips display
 [{
 	"layer": "top",
-    "output": "DP-2",
+    "output": "DP-1",
 	"position": "top",
 
 	"modules-left": [
@@ -34,8 +34,8 @@
 		"format": "{:%H:%M}",
 		"tooltip": false
 	},
+  "format": "{:%d/%m-%y}",
 	"clock#3": {
-		"format": "{:%d/%m-%Y}",
 		/*"format": "{:%y-%m-%d}",*/
 		"tooltip": false
 	},
@@ -60,7 +60,7 @@
 // Xiaomi display
 {
 	"layer": "top",
-    "output": "DP-1",
+    "output": "DP-2",
 	"position": "top",
 
 	"modules-left": [
