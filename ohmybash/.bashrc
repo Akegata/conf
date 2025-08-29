@@ -204,6 +204,7 @@ export NNN_COLORS="#04020301;4231"
 
 # Finally Export the set file colors ( Both options require this)
 export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$UNKNOWN"
+export XAUTHORITY="$HOME/.Xauthority"
 
 alias gitcommit='git add . ; git commit && git push origin $(git branch --show-current)'
 
