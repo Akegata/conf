@@ -40,8 +40,22 @@ window#waybar {
   min-width: 16px;
 }
 #workspaces button.focused {
-	color: #268bd2;
+	color: green;
 }
+
+#workspaces button.active {
+    color: red;
+}
+
+#workspaces button.visible {
+    color: #0cff00; /* teal - or any other distinct color */
+}
+
+/* Active workspace on OTHER VISIBLE MONITORS */
+#workspaces button.visible:not(.focused) {
+    color: #2aa198; /* Teal (different from focused) */
+}
+
 #workspaces button:hover {
 	box-shadow: inherit;
 	text-shadow: inherit;

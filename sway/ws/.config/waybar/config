@@ -15,28 +15,29 @@
 	],
 	"modules-right": [
     "wlr/taskbar",
+		"tray",
 		"pulseaudio",
-		"clock#1",
-		"clock#3",
-		"clock#2",
+		"clock",
 	],
 
-	"sway/workspaces": {
-/*		"disable-scroll": true,*/
-		"format": "{name}"
-	},
-
-	"clock#1": {
-		"format": "{:%a}",
-		"tooltip": false
-	},
-	"clock#2": {
-		"format": "{:%H:%M}",
-		"tooltip": false
-	},
-  "format": "{:%d/%m-%y}",
-	"clock#3": {
-		/*"format": "{:%y-%m-%d}",*/
+  "sway/workspaces": {
+    "format": "{name}",
+    "all-outputs": false,
+    "css": {
+        "color": "white",
+        ".focused": {
+            "color": "blue"
+        },
+        ".visible": {
+            "color": "green"
+        },
+        ".urgent": {
+            "color": "red"
+        }
+    },
+  },
+	"clock": {
+		"format": "{:%a %d/%m-%Y %H:%M}",
 		"tooltip": false
 	},
 
@@ -75,7 +76,7 @@
 		"pulseaudio",
     "wlr/taskbar",
 		"tray",
-		"clock#2",
+		"clock",
 	],
 
 	"custom/left-arrow-dark": {
@@ -96,8 +97,16 @@
 	},
 
 	"sway/workspaces": {
-/*		"disable-scroll": true,*/
-		"format": "{name}"
+	  "format": "{name}",
+        "format-icons": {
+        "focused": "{name}",
+        "active": "{name}",
+        "visible": "{name}",
+        "default": "{name}"
+    },
+	  "disable-scroll": true,
+    "on-click": "activate",
+    "all-outputs": false
 	},
 
   "pulseaudio/slider": {
@@ -120,16 +129,8 @@
     "signal": 8
   },
 
-	"clock#1": {
-		"format": "{:%a}",
-		"tooltip": false
-	},
-	"clock#2": {
-		"format": "{:%H:%M}",
-		"tooltip": false
-	},
-	"clock#3": {
-		"format": "{:%y-%m-%d}",
+	"clock": {
+		"format": "{:%a %d/%m-%Y %H:%M}",
 		"tooltip": false
 	},
 
@@ -207,7 +208,7 @@
 		"disk",
 		"pulseaudio",
     "wlr/taskbar",
-		"clock#2",
+		"clock",
 	],
 
 	"custom/left-arrow-dark": {
@@ -228,8 +229,17 @@
 	},
 
 	"sway/workspaces": {
-/*		"disable-scroll": true,*/
-		"format": "{name}"
+	  "format": "{name}",
+        "format-icons": {
+        "focused": "{name}",
+        "active": "{name}",
+        "visible": "{name}",
+        "default": "{name}"
+    },
+
+	  "disable-scroll": true,
+    "on-click": "activate",
+    "all-outputs": false
 	},
 
   "mpris": {
@@ -247,16 +257,8 @@
 	  // "ignored-players": ["firefox"]
   },
 
-	"clock#1": {
-		"format": "{:%a}",
-		"tooltip": false
-	},
-	"clock#2": {
-		"format": "{:%H:%M}",
-		"tooltip": false
-	},
-	"clock#3": {
-		"format": "{:%y-%m-%d}",
+	"clock": {
+		"format": "{:%a %d/%m-%Y %H:%M}",
 		"tooltip": false
 	},
 

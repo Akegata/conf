@@ -213,4 +213,17 @@ alias n='nnn'
 alias tor-browser='~/.local/bin/tor-browser/Browser/start-tor-browser'
 alias wake-steamdeck="wakeonlan 00:e0:4c:68:03:0c"
 
+alias tmux='tmux attach || tmux new'
+
 export _JAVA_AWT_WM_NONREPARENTING=1
+
+PATH="/home/akegata/perl5/bin${PATH:+:${PATH}}"
+export PATH
+PERL5LIB="/home/akegata/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
+export PERL5LIB
+PERL_LOCAL_LIB_ROOT="/home/akegata/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
+export PERL_LOCAL_LIB_ROOT
+PERL_MB_OPT="--install_base \"/home/akegata/perl5\""
+export PERL_MB_OPT
+PERL_MM_OPT="INSTALL_BASE=/home/akegata/perl5"
+export PERL_MM_OPT

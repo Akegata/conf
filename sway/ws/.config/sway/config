@@ -192,12 +192,14 @@ exec sudo openrgb -p /home/akegata/.config/OpenRGB/off.orp
 exec xhost +
 exec xhost si:localuser:root
 exec lxpolkit
+exec /usr/local/bin/caps2esc
 #exec /usr/lib/polkit-1/polkitd --no-debug
 
 output * bg #000000 solid_color
 
 input "type:keyboard" {
     xkb_layout se
+    xkb_options caps:escape
 }
 
 default_border none
